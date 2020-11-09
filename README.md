@@ -1,4 +1,4 @@
 # SPPOnline
 
-# I Nyoman Marcel Mahardika (71180346)
-# Yabes Qinen Yehdeya (71180350)
+Selamat Datang di SPP Online
+Semoga kita semua selalu diberi kesehatan sehingga dapat melakukan aktivitas di masa pandemi ini
