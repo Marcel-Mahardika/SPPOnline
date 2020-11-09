@@ -1,4 +1,4 @@
 # SPPOnline
 
 Selamat Datang di SPP Online
-Semoga kita semua selalu diberi kesehatan sehingga dapat melakukan aktivitas di masa pandemi ini
+Jaga kesehatan dan ikuti protokol kesehatan supaya kita semua terhindar dari virus corona :)
