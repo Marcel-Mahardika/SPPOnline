@@ -31,7 +31,7 @@ public class Intro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +50,7 @@ public class Intro extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
         jLabel5.setText("Yabes Qinen Yehdeya (71180350)");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\Tugas Akhir RPL\\SPPOnline\\logo aplikasi.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\Tugas Akhir RPL\\SPPOnline\\SPPOnline\\logo aplikasi.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,10 +73,11 @@ public class Intro extends javax.swing.JFrame {
                         .addGap(113, 113, 113))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(141, 141, 141))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(222, 222, 222))))
+                        .addGap(141, 141, 141))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(jLabel6)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,9 +92,9 @@ public class Intro extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addGap(43, 43, 43)
-                .addComponent(jLabel7)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jLabel6)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,6 +141,6 @@ public class Intro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }
