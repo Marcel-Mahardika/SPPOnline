@@ -9,6 +9,6 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: ../SPPOnline/Main/src/main/resources/com/mycompany/main/background_first_page.jpg;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.PrimaryController">
    <children>
       <Button layoutX="389.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Masuk Sebagai User" fx:id="primaryButton" onAction="#switchToUserLogin"/>
-      <Button layoutX="79.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Masuk Sebagai Admin" />
+      <Button layoutX="79.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Masuk Sebagai Admin" fx:id="adminButton" onAction="#switchToAdminLogin"/>
    </children>
 </Pane>

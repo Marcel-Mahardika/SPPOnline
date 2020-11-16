@@ -9,4 +9,8 @@ public class PrimaryController {
     private void switchToUserLogin() throws IOException {
         App.setRoot("user_login");
     }
+    @FXML
+    private void switchToAdminLogin() throws IOException {
+        App.setRoot("admin_login");
+    }
 }
