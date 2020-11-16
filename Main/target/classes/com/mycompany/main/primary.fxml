@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: ../SPPOnline/Main/src/main/resources/com/mycompany/main/background_first_page.jpg;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.PrimaryController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="657.0" style="-fx-background-image: ../SPPOnline/Main/src/main/resources/com/mycompany/main/background_first_page.jpg;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.PrimaryController">
    <children>
-      <Button layoutX="389.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Masuk Sebagai User" fx:id="primaryButton" onAction="#switchToUserLogin"/>
-      <Button layoutX="79.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Masuk Sebagai Admin" fx:id="adminButton" onAction="#switchToAdminLogin"/>
+      <Button fx:id="primaryButton" layoutX="405.0" layoutY="320.0" mnemonicParsing="false" onAction="#switchToUserLogin" opacity="0.8" prefHeight="34.0" prefWidth="188.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFF; -fx-border-color: #53c4f5;" text="Masuk Sebagai User" textFill="#53c4f5">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label layoutX="158.0" layoutY="129.0" opacity="0.8" text="Selamat Datang di SPP Online">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="adminButton" layoutX="78.0" layoutY="321.0" mnemonicParsing="false" onAction="#switchToAdminLogin" opacity="0.8" prefHeight="34.0" prefWidth="188.0" style="-fx-background-radius: 5; -fx-border-color: #9b6be8; -fx-background-color: #FFF; -fx-border-radius: 5;" text="Masuk Sebagai Admin" textFill="#9b6be8">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fitHeight="62.0" fitWidth="75.0" layoutX="34.0" layoutY="305.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@RPL-LOGO.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="62.0" fitWidth="75.0" layoutX="370.0" layoutY="307.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@RPL-LOGO.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="84.0" layoutY="200.0" opacity="0.8" text="SPP Online merupakan aplikasi yang dapat membantu anda dalam melakukan">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="151.0" layoutY="227.0" opacity="0.8" text="pembayaran SPP secara online dengan mudah dan cepat">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Line endX="-100.0" endY="190.2745361328125" layoutX="426.0" layoutY="236.0" opacity="0.5" startX="-100.0" startY="29.333328247070312" />
+      <CubicCurve controlX1="-112.5" controlX2="173.0" controlY1="394.2745361328125" controlY2="88.99999237060547" endX="206.5" endY="-22.725448608398438" fill="#73bbff" layoutX="-15.0" layoutY="-6.0" opacity="0.45" startX="-150.0" stroke="WHITE" strokeWidth="0.0" />
+      <CubicCurve controlX1="-124.43705749511719" controlX2="182.4962615966797" controlY1="139.39825439453125" controlY2="93.1078872680664" endX="173.16293334960938" endY="-10.225448608398438" fill="#d490ff" layoutX="-26.0" layoutY="-28.0" opacity="0.45" startX="-150.0" stroke="WHITE" strokeWidth="0.0" />
+      <CubicCurve controlX1="-66.5" controlX2="173.1629638671875" controlY1="211.27455139160156" controlY2="334.2745361328125" endX="173.16293334960938" endY="-10.225448608398438" fill="#73bbff" layoutX="644.0" layoutY="-7.0" opacity="0.45" startX="-170.4254150390625" startY="7.0000152587890625" stroke="WHITE" strokeWidth="0.0" />
+      <CubicCurve controlX1="-124.43705749511719" controlX2="227.577880859375" controlY1="139.39825439453125" controlY2="128.27455139160156" endX="173.16293334960938" endY="-10.225448608398438" fill="#d490ff" layoutX="658.0" layoutY="-35.0" opacity="0.45" startX="-160.4254150390625" startY="-10.225448608398438" stroke="WHITE" strokeWidth="0.0" />
    </children>
 </Pane>
