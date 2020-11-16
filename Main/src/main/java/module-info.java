@@ -4,6 +4,7 @@ module com.mycompany.main {
     requires javafx.base;
     requires javafx.graphics;
     requires java.base;
+    requires java.sql;
 
     opens com.mycompany.main to javafx.fxml;
     exports com.mycompany.main;
