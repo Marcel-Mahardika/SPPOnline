@@ -19,7 +19,7 @@ public class DBConnect {
         Connection conn = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:SPPOnline.sqlite");
+            conn = DriverManager.getConnection("jdbc:sqlite:SPPOnline.db");
             System.out.println("Berhasil Terkoneksi");
             
         }

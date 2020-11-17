@@ -40,15 +40,15 @@
             </Pane>
          </left>
          <center>
-            <Pane prefHeight="524.0" prefWidth="374.0" BorderPane.alignment="CENTER">
+            <Pane fx:id="panel_login" prefHeight="524.0" prefWidth="374.0" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="125.0" layoutY="65.0" text="User Login">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="51.0" layoutY="140.0" prefHeight="43.0" prefWidth="269.0" promptText="Masukkan Username" style="-fx-background-radius: 5;" />
-                  <Button layoutX="51.0" layoutY="282.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="269.0" style="-fx-background-color: #53c4f5; -fx-background-radius: 5;" text="Login" textFill="WHITE">
+                  <TextField fx:id="txt_username" layoutX="51.0" layoutY="140.0" prefHeight="43.0" prefWidth="269.0" promptText="Masukkan Username" style="-fx-background-radius: 5;" />
+                  <Button fx:id="btn_login" layoutX="51.0" layoutY="282.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="269.0" style="-fx-background-color: #53c4f5; -fx-background-radius: 5;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -64,7 +64,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <PasswordField layoutX="51.0" layoutY="211.0" prefHeight="45.0" prefWidth="269.0" promptText="Masukkan Password" style="-fx-background-radius: 5;" />
+                  <PasswordField fx:id="txt_password" layoutX="51.0" layoutY="211.0" prefHeight="45.0" prefWidth="269.0" promptText="Masukkan Password" style="-fx-background-radius: 5;" />
                </children>
             </Pane>
          </center>

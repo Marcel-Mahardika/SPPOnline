@@ -23,6 +23,14 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
+//    @Override
+//    public void start(Stage stage) throws Exception {
+//        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/com/mycompany/main/user_login.fxml"));
+//        Scenescene = new Scene(root);
+//        stage.scene = scene;
+//        stage.show();
+//    }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
@@ -34,7 +42,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-//        launch(); 
+        launch(); 
         DBConnect.ConnDB();
     }
 
