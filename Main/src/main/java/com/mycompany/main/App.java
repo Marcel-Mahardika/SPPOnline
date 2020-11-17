@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import helper.DBConnect;    //import package DBConnect
+
 import java.io.IOException;
 
 /**
@@ -32,7 +34,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+//        launch(); 
+        DBConnect.ConnDB();
     }
 
 }

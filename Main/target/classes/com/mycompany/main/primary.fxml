@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="657.0" style="-fx-background-image: ../SPPOnline/Main/src/main/resources/com/mycompany/main/background_first_page.jpg;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.PrimaryController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.PrimaryController">
    <children>
       <Button fx:id="primaryButton" layoutX="405.0" layoutY="320.0" mnemonicParsing="false" onAction="#switchToUserLogin" opacity="0.8" prefHeight="34.0" prefWidth="188.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFF; -fx-border-color: #53c4f5;" text="Masuk Sebagai User" textFill="#53c4f5">
          <font>

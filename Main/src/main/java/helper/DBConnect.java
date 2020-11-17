@@ -14,24 +14,18 @@ import java.sql.SQLException;
  * @author IMahardika
  */
 public class DBConnect {
-    private static Connection conn = null;
     
     public static Connection ConnDB() {
-        String db = "jdbc:sqlite:SPPOnline.sqlite";
+        Connection conn = null;
         try {
-//            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection(db);
-            System.err.println("Berhasil Terkoneksi");
-            return conn;
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:SPPOnline.sqlite");
+            System.out.println("Berhasil Terkoneksi");
+            
         }
-        catch (SQLException e) {
-            return null;
-        }
-        
-    }
-    
-    public static void close() {
-        
-    }
-    
+        catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        } 
+        return conn;
+    }  
 }
