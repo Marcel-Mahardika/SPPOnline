@@ -14,9 +14,9 @@ import java.sql.SQLException;
  * @author IMahardika
  */
 public class DBConnect {
-    
+    static Connection conn = null;
     public static Connection ConnDB() {
-        Connection conn = null;
+        
         try {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection("jdbc:sqlite:SPPOnline.db");
@@ -28,4 +28,15 @@ public class DBConnect {
         } 
         return conn;
     }  
+    
+    public static Connection CLoseDB() throws SQLException {
+        try {
+            conn.close();
+            System.out.println("Database Berhasil Terputus");
+        }
+        catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }

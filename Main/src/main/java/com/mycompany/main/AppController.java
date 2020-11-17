@@ -5,8 +5,11 @@
  */
 package com.mycompany.main;
 
+import helper.DBConnect;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,17 +32,18 @@ public class AppController implements Initializable {
     /**
      * Initializes the controller class.
      * @throws java.io.IOException
+     * @throws java.sql.SQLException
      */
     
-    public void logout() throws IOException {
-        btn_logout.getScene().getWindow().hide();
+    public void logout() throws IOException, SQLException {
+        try {
+            Connection conn = DBConnect.CLoseDB();
+            App.setRoot("user_login");
+        }
         
-         AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("user_login.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Login");
-            stage.show();
+        catch(Exception e) {
+            
+        }
     }
     
     @Override

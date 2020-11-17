@@ -87,11 +87,13 @@ public class UserLoginController {
             
             Alert message = new Alert(AlertType.INFORMATION);
             if(resultSet.next()) {
-                AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("app.fxml"));
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
+                App.setRoot("app");
+                
+//                AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("app.fxml"));
+//                Scene scene = new Scene(root);
+//                Stage stage = new Stage();
+//                stage.setScene(scene);
+//                stage.show();
             }
             else {
                 message.setContentText("Maaf Username atau Password Anda salah!");
