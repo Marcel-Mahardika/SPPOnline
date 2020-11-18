@@ -39,15 +39,15 @@
             </Pane>
          </left>
          <center>
-            <Pane prefHeight="565.0" prefWidth="464.0" BorderPane.alignment="CENTER">
+            <Pane fx:id="panel_login" prefHeight="565.0" prefWidth="464.0" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="113.0" layoutY="65.0" text="Admin Login">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="51.0" layoutY="140.0" prefHeight="43.0" prefWidth="269.0" promptText="Masukkan Username" style="-fx-background-radius: 5;" />
-                  <Button layoutX="51.0" layoutY="282.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="269.0" style="-fx-background-color: #9b6be8; -fx-background-radius: 5;" text="Login" textFill="WHITE">
+                  <TextField fx:id="txt_username" layoutX="51.0" layoutY="140.0" prefHeight="43.0" prefWidth="269.0" promptText="Masukkan Username" style="-fx-background-radius: 5;" />
+                  <Button fx:id="btn_login" layoutX="51.0" layoutY="282.0" mnemonicParsing="false" onAction="#login" prefHeight="41.0" prefWidth="269.0" style="-fx-background-color: #9b6be8; -fx-background-radius: 5;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -55,7 +55,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="230.0" layoutY="416.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="34.0" prefWidth="90.0" style="-fx-border-color: #9b6be8; -fx-border-width: 2px; -fx-background-color: #eee3ff; -fx-border-radius: 5; -fx-background-radius: 5;" text="Kembali" textFill="#9b6be8">
+                  <Button fx:id="btn_kembali" layoutX="230.0" layoutY="416.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="34.0" prefWidth="90.0" style="-fx-border-color: #9b6be8; -fx-border-width: 2px; -fx-background-color: #eee3ff; -fx-border-radius: 5; -fx-background-radius: 5;" text="Kembali" textFill="#9b6be8">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -63,7 +63,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <PasswordField layoutX="51.0" layoutY="210.0" prefHeight="45.0" prefWidth="269.0" promptText="Masukkan Password" style="-fx-background-radius: 5;" />
+                  <PasswordField fx:id="txt_password" layoutX="51.0" layoutY="210.0" prefHeight="45.0" prefWidth="269.0" promptText="Masukkan Password" style="-fx-background-radius: 5;" />
                </children>
             </Pane>
          </center>
