@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class AdminLoginController {
     
@@ -56,6 +57,13 @@ public class AdminLoginController {
 //                stage.setScene(scene);
 //                stage.show();
             }
+            
+            else if(txt_username.getText().isEmpty() || txt_password.getText().isEmpty()) {
+                message.setContentText("Maaf Username atau Password Tidak Boleh Kosong!");
+                message.setTitle("Error!");
+                message.show(); 
+            }
+           
             else {
                 message.setContentText("Maaf Username atau Password Anda salah!");
                 message.setTitle("Error!");

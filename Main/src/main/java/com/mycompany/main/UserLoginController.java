@@ -95,8 +95,15 @@ public class UserLoginController {
 //                stage.setScene(scene);
 //                stage.show();
             }
+            
+            else if(txt_username.getText().isEmpty() || txt_password.getText().isEmpty()) {
+                message.setContentText("Maaf Username atau Password Tidak Boleh Kosong!");
+                message.setTitle("Error!");
+                message.show(); 
+            }
+            
             else {
-                message.setContentText("Maaf Username atau Password Anda salah!");
+                message.setContentText("Maaf Username atau Password Anda Salah!");
                 message.setTitle("Error!");
                 message.show(); 
             }

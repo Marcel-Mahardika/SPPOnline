@@ -7,16 +7,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="661.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.mycompany.main.App_adminsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.App_adminsController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="661.0">
          <children>
             <BorderPane prefHeight="400.0" prefWidth="661.0">
                <top>
-                  <Pane prefHeight="86.0" prefWidth="661.0" style="-fx-background-color: #9b6be8;" BorderPane.alignment="CENTER">
+                  <Pane prefHeight="86.0" prefWidth="661.0" style="-fx-background-color: #53c4f5;" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="btn_logout" layoutX="532.0" layoutY="43.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #6947a1;" text="Logout" textFill="WHITE">
+                        <Button fx:id="btn_logout" layoutX="532.0" layoutY="43.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

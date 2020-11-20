@@ -17,7 +17,7 @@
    <children>
       <BorderPane prefHeight="565.0" prefWidth="818.0">
          <left>
-            <Pane prefHeight="485.0" prefWidth="281.0" style="-fx-background-color: #9b6be8;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="485.0" prefWidth="281.0" style="-fx-background-color: #53c4f5e8;" BorderPane.alignment="CENTER">
                <children>
                   <Circle fill="WHITE" layoutX="141.0" layoutY="173.0" opacity="0.75" radius="74.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                   <ImageView fitHeight="117.0" fitWidth="143.0" layoutX="71.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
@@ -47,7 +47,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="txt_username" layoutX="51.0" layoutY="140.0" prefHeight="43.0" prefWidth="269.0" promptText="Masukkan Username" style="-fx-background-radius: 5;" />
-                  <Button fx:id="btn_login" layoutX="51.0" layoutY="282.0" mnemonicParsing="false" onAction="#login" prefHeight="41.0" prefWidth="269.0" style="-fx-background-color: #9b6be8; -fx-background-radius: 5;" text="Login" textFill="WHITE">
+                  <Button fx:id="btn_login" layoutX="51.0" layoutY="282.0" mnemonicParsing="false" onAction="#login" prefHeight="41.0" prefWidth="269.0" style="-fx-background-color: #53c4f5; -fx-background-radius: 5;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -55,7 +55,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_kembali" layoutX="230.0" layoutY="416.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="34.0" prefWidth="90.0" style="-fx-border-color: #9b6be8; -fx-border-width: 2px; -fx-background-color: #eee3ff; -fx-border-radius: 5; -fx-background-radius: 5;" text="Kembali" textFill="#9b6be8">
+                  <Button fx:id="btn_kembali" layoutX="230.0" layoutY="416.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="34.0" prefWidth="90.0" style="-fx-border-color: #53c4f5; -fx-border-width: 2px; -fx-background-color: #e0f6ff; -fx-border-radius: 5; -fx-background-radius: 5;" text="Kembali" textFill="#53c4f5">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

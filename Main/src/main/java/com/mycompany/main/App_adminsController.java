@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -28,6 +29,9 @@ public class App_adminsController implements Initializable {
     
     @FXML
     private Button btn_logout;
+    
+    @FXML
+    private Label lbl_admin;
     
     public void logout() throws IOException, SQLException {
         try {
