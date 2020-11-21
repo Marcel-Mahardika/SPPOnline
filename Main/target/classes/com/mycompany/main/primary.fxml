@@ -30,13 +30,13 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label layoutX="509.0" layoutY="301.0" opacity="0.8" text="SPP Online merupakan aplikasi yang dapat membantu anda dalam melakukan" textFill="WHITE">
+      <Label layoutX="457.0" layoutY="300.0" opacity="0.8" text="SPP Online merupakan aplikasi yang dapat membantu anda dalam melakukan" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font size="18.0" />
          </font></Label>
-      <Label layoutX="577.0" layoutY="329.0" opacity="0.8" text="pembayaran SPP secara online dengan mudah dan cepat" textFill="WHITE">
+      <Label layoutX="541.0" layoutY="330.0" opacity="0.8" text="pembayaran SPP secara online dengan mudah dan cepat" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font size="18.0" />
          </font></Label>
       <Line endX="-100.0" endY="190.2745361328125" fill="WHITE" layoutX="854.0" layoutY="350.0" opacity="0.5" startX="-100.0" startY="29.333328247070312" stroke="WHITE" />
       <Pane layoutY="29.0" prefHeight="20.0" prefWidth="310.0" style="-fx-background-color: #53c4f5;" />
