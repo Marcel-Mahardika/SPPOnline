@@ -38,10 +38,13 @@ public class App_adminsController implements Initializable {
             Connection conn = DBConnect.CLoseDB();
             App.setRoot("admin_login");
         }
-        
-        catch(SQLException e) {
-            
+        catch(SQLException e) { 
         }
+    }
+    
+    //untuk pindah ke menu kelola user
+    public void kelola_user() throws IOException {
+        App.setRoot("kelola_user");
     }
     
     @Override

@@ -7,6 +7,7 @@ package com.mycompany.main;
 
 import com.mycompany.main.User;
 import helper.DBConnect;
+import java.io.IOException;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -33,65 +34,46 @@ import javafx.scene.input.MouseEvent;
  */
 public class Kelola_userController implements Initializable {
 
-
-    @FXML
-    private Button btn_logout;
-    @FXML
-    private Button btn_kembali;
-    @FXML
-    private TextField txt_id;
-    @FXML
-    private TextField txt_nama;
-    @FXML
-    private TextField txt_anak;
-    @FXML
-    private TextField txt_alamat;
-    @FXML
-    private TextField txt_telepon;
-    @FXML
-    private TextField txt_username;
-    @FXML
-    private TextField txt_password;
-    @FXML
-    private TableView<User> tb_user;
-    @FXML
-    private TableColumn<User, Integer> col_id;
-    @FXML
-    private TableColumn<User, String> col_nama;
-    @FXML
-    private TableColumn<User, String> col_anak;
-    @FXML
-    private TableColumn<User, String> col_alamat;
-    @FXML
-    private TableColumn<User, String> col_telepon;
-    @FXML
-    private TableColumn<User, String> col_username;
-    @FXML
-    private TableColumn<User, String> col_password;
-    @FXML
-    private Button btn_insert;
-    @FXML
-    private Button btn_update;
-    @FXML
-    private Button btn_delete;
+    @FXML private Button btn_logout;
+    @FXML private Button btn_kembali;
+    @FXML private TextField txt_id;
+    @FXML private TextField txt_nama;
+    @FXML private TextField txt_anak;
+    @FXML private TextField txt_alamat;
+    @FXML private TextField txt_telepon;
+    @FXML private TextField txt_username;
+    @FXML private TextField txt_password;
+    @FXML private TableView<User> tb_user;
+    @FXML private TableColumn<User, Integer> col_id;
+    @FXML private TableColumn<User, String> col_nama;
+    @FXML private TableColumn<User, String> col_anak;
+    @FXML private TableColumn<User, String> col_alamat;
+    @FXML private TableColumn<User, String> col_telepon;
+    @FXML private TableColumn<User, String> col_username;
+    @FXML private TableColumn<User, String> col_password;
+    @FXML private Button btn_insert;
+    @FXML private Button btn_update;
+    @FXML private Button btn_delete;
+    
     /**
      * Initializes the controller class.
      * @param url
      * @param rb
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         showUser();
     } 
     
+    //fungsi untuk mencari list user pada database
     public ObservableList<User> getUserList() {
         ObservableList<User> userList = FXCollections.observableArrayList();
         Connection conn = DBConnect.ConnDB();
         String query = "SELECT * FROM user";
         Statement st;
         ResultSet rs;
-        
         try {
             st = conn.createStatement();
             rs = st.executeQuery(query);
@@ -107,6 +89,7 @@ public class Kelola_userController implements Initializable {
         return userList;    
     }
     
+    //fungsi untuk menampilkan list user yang ada dalam database
     public void showUser() {
         ObservableList<User> list = getUserList();
         
@@ -121,6 +104,7 @@ public class Kelola_userController implements Initializable {
         tb_user.setItems(list);
     }
     
+    //fungsi supaya command query bisa di execute
     private void executeQuery(String query) {
         Connection conn = DBConnect.ConnDB();
         Statement st;
@@ -133,6 +117,7 @@ public class Kelola_userController implements Initializable {
         }
     }
     
+    //fungsi untuk insert user baru
     private void insert() {
         String query = "INSERT INTO user VALUES (" + txt_id.getText() + ",'" + txt_nama.getText() + "','" + txt_anak.getText() + "','" 
                 + txt_alamat.getText() + "','" + txt_username.getText() + "','" + txt_password.getText() + "','" + txt_telepon.getText() +"')"; 
@@ -140,6 +125,7 @@ public class Kelola_userController implements Initializable {
         showUser();
     }
     
+    //fungsi untuk update user
     private void update() {
         String query = "UPDATE user SET nama_user = '" + txt_nama.getText() + "', nama_anak_user = '" + txt_anak.getText() + 
                 "', alamat = '" + txt_alamat.getText() + "', username = '" + txt_username.getText() + "', password = '" + txt_password.getText() + 
@@ -148,6 +134,7 @@ public class Kelola_userController implements Initializable {
         showUser();
     }
     
+    //fungsi untuk delete user
     private void delete() {
         String query = "DELETE FROM user WHERE id = " + txt_id.getText() + " ";
         executeQuery(query);
@@ -183,5 +170,20 @@ public class Kelola_userController implements Initializable {
         txt_password.setText(user.getPassword());
         txt_telepon.setText(user.getNo_telp());
     }
+    
+    //fungsi untuk logout
+    public void logout() throws IOException, SQLException {
+        try {
+            Connection conn = DBConnect.CLoseDB();
+            App.setRoot("admin_login");
+        }
+        catch(SQLException e) {
+        }
+    }
+    
+//    //fungsi untuk tombol kembali
+//    public void kembali() throws IOException {
+//        App.setRoot("app_admins");
+//    }
     
 }
