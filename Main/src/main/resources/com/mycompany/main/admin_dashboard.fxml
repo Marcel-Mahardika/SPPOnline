@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.App_adminsController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="1510.0">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="1510.0">
+               <left>
+                  <Pane prefHeight="328.0" prefWidth="242.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="menu_kelola_user" layoutX="36.0" layoutY="28.0" mnemonicParsing="false" onAction="#kelola_user" style="-fx-background-color: transparent;" text="1. Kelola Akun User">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="36.0" layoutY="72.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="2. Laporan Pembayaran">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Line endX="-100.0" endY="272.0" layoutX="344.0" layoutY="232.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
+                     </children>
+                  </Pane>
+               </left>
+               <top>
+                  <Pane prefHeight="72.0" prefWidth="1513.0" style="-fx-background-color: #53c4f5;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="btn_logout1" layoutX="1386.0" layoutY="21.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label layoutX="698.0" layoutY="17.0" text="SPP-Online" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </top>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
