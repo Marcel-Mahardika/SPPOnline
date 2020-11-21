@@ -55,6 +55,12 @@ public class Kelola_userController implements Initializable {
     @FXML private Button btn_update;
     @FXML private Button btn_delete;
     
+    @FXML
+    private Button menu_kelola_user;
+    
+    @FXML
+    private Button menu_laporan;
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -179,6 +185,10 @@ public class Kelola_userController implements Initializable {
         }
         catch(SQLException e) {
         }
+    }
+    
+    public void laporan() throws IOException {
+        App.setRoot("laporan_pembayaran");
     }
     
 //    //fungsi untuk tombol kembali

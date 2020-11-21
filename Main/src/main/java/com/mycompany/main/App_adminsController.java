@@ -33,6 +33,12 @@ public class App_adminsController implements Initializable {
     @FXML
     private Label lbl_admin;
     
+    @FXML
+    private Button menu_kelola_user;
+    
+    @FXML
+    private Button menu_laporan;
+    
     public void logout() throws IOException, SQLException {
         try {
             Connection conn = DBConnect.CLoseDB();
@@ -45,6 +51,10 @@ public class App_adminsController implements Initializable {
     //untuk pindah ke menu kelola user
     public void kelola_user() throws IOException {
         App.setRoot("kelola_user");
+    }
+    
+    public void laporan() throws IOException {
+        App.setRoot("laporan");
     }
     
     @Override

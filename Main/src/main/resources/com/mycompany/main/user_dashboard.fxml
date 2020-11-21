@@ -9,13 +9,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1510.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.AppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.AppController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="1510.0">
+      <BorderPane prefHeight="600.0" prefWidth="1115.0">
          <top>
             <Pane prefHeight="72.0" prefWidth="1510.0" style="-fx-background-color: #53c4f5;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btn_logout" layoutX="1386.0" layoutY="21.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
+                  <Button fx:id="btn_logout" layoutX="1006.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -23,6 +23,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Label layoutX="498.0" layoutY="15.0" text="SPP-Online" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </top>
@@ -43,11 +48,6 @@
             </Pane>
          </left>
       </BorderPane>
-      <Label layoutX="698.0" layoutY="17.0" text="SPP-Online" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
       <Line endX="-100.0" endY="272.0" layoutX="344.0" layoutY="306.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
    </children>
 </AnchorPane>

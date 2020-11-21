@@ -12,11 +12,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1510.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.Kelola_userController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.Kelola_userController">
    <children>
-      <Pane prefHeight="72.0" prefWidth="1513.0" style="-fx-background-color: #53c4f5;">
+      <Pane prefHeight="72.0" prefWidth="1116.0" style="-fx-background-color: #53c4f5;">
          <children>
-            <Button fx:id="btn_logout" layoutX="1386.0" layoutY="21.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
+            <Button fx:id="btn_logout" layoutX="1006.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -24,7 +24,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="698.0" layoutY="17.0" text="SPP-Online" textFill="WHITE">
+            <Label layoutX="502.0" layoutY="19.0" text="SPP-Online" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -111,7 +111,7 @@
             </Label>
          </children>
       </VBox>
-      <TableView fx:id="tb_user" layoutX="624.0" layoutY="176.0" onMouseClicked="#click_action" prefHeight="311.0" prefWidth="826.0">
+      <TableView fx:id="tb_user" layoutX="624.0" layoutY="176.0" onMouseClicked="#click_action" prefHeight="311.0" prefWidth="451.0">
         <columns>
           <TableColumn fx:id="col_id" prefWidth="43.0" text="ID" />
           <TableColumn fx:id="col_nama" prefWidth="117.0" text="Nama User" />
@@ -146,7 +146,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="669.0" layoutY="97.0" text="Kelola Data User">
+      <Label layoutX="472.0" layoutY="96.0" text="Kelola Data User">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -161,7 +161,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="36.0" layoutY="72.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="2. Laporan Pembayaran">
+            <Button fx:id="menu_laporan" layoutX="36.0" layoutY="72.0" mnemonicParsing="false" onAction="#laporan" style="-fx-background-color: transparent;" text="2. Laporan Pembayaran">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
