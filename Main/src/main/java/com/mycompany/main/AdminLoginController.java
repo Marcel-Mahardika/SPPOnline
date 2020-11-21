@@ -49,7 +49,7 @@ public class AdminLoginController {
             
             Alert message = new Alert(Alert.AlertType.INFORMATION);
             if(resultSet.next()) {
-                App.setRoot("app_admins");
+                App.setRoot("admin_dashboard");
                 
 //                AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("app.fxml"));
 //                Scene scene = new Scene(root);

@@ -9,39 +9,38 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.PrimaryController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1510.0" style="-fx-background-color: #53c4f5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.PrimaryController">
    <children>
-      <Button fx:id="primaryButton" layoutX="404.0" layoutY="320.0" mnemonicParsing="false" onAction="#switchToUserLogin" opacity="0.8" prefHeight="34.0" prefWidth="188.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFF; -fx-border-color: #53c4f5;" text="Masuk Sebagai User" textFill="#53c4f5">
+      <Button fx:id="primaryButton" layoutX="877.0" layoutY="434.0" mnemonicParsing="false" onAction="#switchToUserLogin" opacity="0.8" prefHeight="51.0" prefWidth="279.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #3e91b5; -fx-border-color: #3e91b5;" text="Masuk Sebagai User" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label layoutX="158.0" layoutY="147.0" opacity="0.8" text="Selamat Datang di SPP-Online">
+      <Label layoutX="592.0" layoutY="244.0" opacity="0.8" text="Selamat Datang di SPP-Online" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="adminButton" layoutX="78.0" layoutY="321.0" mnemonicParsing="false" onAction="#switchToAdminLogin" opacity="0.8" prefHeight="34.0" prefWidth="188.0" style="-fx-background-radius: 5; -fx-border-color: #53c4f5; -fx-background-color: #FFF; -fx-border-radius: 5;" text="Masuk Sebagai Admin" textFill="#53c4f5">
+      <Button fx:id="adminButton" layoutX="347.0" layoutY="434.0" mnemonicParsing="false" onAction="#switchToAdminLogin" opacity="0.8" prefHeight="51.0" prefWidth="279.0" style="-fx-background-radius: 5; -fx-border-color: #3e91b5; -fx-background-color: #3e91b5; -fx-border-radius: 5;" text="Masuk Sebagai Admin" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label layoutX="84.0" layoutY="200.0" opacity="0.8" text="SPP Online merupakan aplikasi yang dapat membantu anda dalam melakukan">
+      <Label layoutX="509.0" layoutY="301.0" opacity="0.8" text="SPP Online merupakan aplikasi yang dapat membantu anda dalam melakukan" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="151.0" layoutY="226.0" opacity="0.8" text="pembayaran SPP secara online dengan mudah dan cepat">
+      <Label layoutX="577.0" layoutY="329.0" opacity="0.8" text="pembayaran SPP secara online dengan mudah dan cepat" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Line endX="-100.0" endY="190.2745361328125" layoutX="434.0" layoutY="236.0" opacity="0.5" startX="-100.0" startY="29.333328247070312" />
+      <Line endX="-100.0" endY="190.2745361328125" fill="WHITE" layoutX="854.0" layoutY="350.0" opacity="0.5" startX="-100.0" startY="29.333328247070312" stroke="WHITE" />
       <Pane layoutY="29.0" prefHeight="20.0" prefWidth="310.0" style="-fx-background-color: #53c4f5;" />
-      <Pane layoutX="354.0" layoutY="109.0" prefHeight="20.0" prefWidth="310.0" style="-fx-background-color: #53c4f5;" />
-      <ImageView fitHeight="105.0" fitWidth="140.0" layoutX="269.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="154.0" fitWidth="189.0" layoutX="665.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@RPL-LOGO.png" />
          </image>

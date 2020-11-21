@@ -35,6 +35,7 @@ public class AppController implements Initializable {
      * @throws java.sql.SQLException
      */
     
+    @FXML
     public void logout() throws IOException, SQLException {
         try {
             Connection conn = DBConnect.CLoseDB();

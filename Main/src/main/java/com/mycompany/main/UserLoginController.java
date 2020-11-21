@@ -77,7 +77,7 @@ public class UserLoginController {
             
             Alert message = new Alert(AlertType.INFORMATION);
             if(resultSet.next()) {
-                App.setRoot("app");
+                App.setRoot("user_dashboard");
                 
 //                AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("app.fxml"));
 //                Scene scene = new Scene(root);
