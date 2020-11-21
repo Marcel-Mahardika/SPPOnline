@@ -23,7 +23,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label layoutX="498.0" layoutY="15.0" text="SPP-Online" textFill="WHITE">
+                  <Label layoutX="502.0" layoutY="19.0" text="SPP-Online" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -34,12 +34,7 @@
          <left>
             <Pane prefHeight="328.0" prefWidth="242.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="36.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="1. ">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="36.0" layoutY="72.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="2. ">
+                  <Button fx:id="btn_bayarSPP" layoutX="36.0" layoutY="28.0" mnemonicParsing="false" onAction="#bayarSPP" style="-fx-background-color: transparent;" text="1. Bayar SPP">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

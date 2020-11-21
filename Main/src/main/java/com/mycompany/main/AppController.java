@@ -29,6 +29,10 @@ public class AppController implements Initializable {
 
     @FXML
     private Button btn_logout;
+    
+    @FXML
+    private Button btn_bayarSPP;
+    
     /**
      * Initializes the controller class.
      * @throws java.io.IOException
@@ -50,6 +54,10 @@ public class AppController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }  
+    
+    public void bayarSPP() throws IOException {
+        App.setRoot("bayar_spp");
+    }
     
 }
