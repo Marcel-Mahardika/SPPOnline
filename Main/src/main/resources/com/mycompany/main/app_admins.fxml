@@ -13,7 +13,7 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="661.0">
          <children>
-            <BorderPane prefHeight="600.0" prefWidth="1510.0">
+            <BorderPane layoutX="-18.0" layoutY="-5.0" prefHeight="600.0" prefWidth="1510.0">
                <left>
                   <Pane prefHeight="328.0" prefWidth="242.0" BorderPane.alignment="CENTER">
                      <children>
