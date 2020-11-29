@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +12,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.Bayar_sppController">
    <children>
-      <TextField layoutX="425.0" layoutY="190.0" prefHeight="25.0" prefWidth="169.0" promptText="Masukan Nominal" />
       <Pane prefHeight="72.0" prefWidth="1116.0" style="-fx-background-color: #53c4f5;">
          <children>
             <Button fx:id="btn_logout" layoutX="1006.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
@@ -55,21 +55,46 @@
             <Line endX="-100.0" endY="272.0" layoutX="344.0" layoutY="232.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
          </children>
       </Pane>
-      <Label layoutX="275.0" layoutY="104.0" text="Nama Pembayar">
+      <Label layoutX="275.0" layoutY="180.0" text="Nama Pembayar">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="426.0" layoutY="102.0" prefHeight="25.0" prefWidth="169.0" promptText="Masukkan Nama" />
-      <Label layoutX="275.0" layoutY="148.0" text="Nama Anak/Siswa">
+      <TextField layoutX="426.0" layoutY="175.0" prefHeight="30.0" prefWidth="490.0" promptText="Masukkan Nama" />
+      <Label layoutX="275.0" layoutY="224.0" text="NIS Siswa">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="425.0" layoutY="146.0" prefHeight="25.0" prefWidth="169.0" promptText="Masukkan Nama Siswa" />
-      <Label layoutX="275.0" layoutY="193.0" text="Nominal">
+      <TextField layoutX="425.0" layoutY="219.0" prefHeight="30.0" prefWidth="490.0" promptText="Masukkan NIS Siswa" />
+      <Label layoutX="275.0" layoutY="268.0" text="Nama Siswa">
          <font>
             <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="425.0" layoutY="263.0" prefHeight="30.0" prefWidth="490.0" promptText="Masukkan Nama Siswa" />
+      <Label layoutX="275.0" layoutY="312.0" text="Kelas">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="425.0" layoutY="307.0" prefHeight="30.0" prefWidth="490.0" promptText="Masukkan Kelas Siswa" />
+      <Label layoutX="274.0" layoutY="356.0" text="Pembayaran">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <DatePicker layoutX="425.0" layoutY="351.0" prefHeight="30.0" prefWidth="169.0" />
+      <TextField layoutX="651.0" layoutY="353.0" prefHeight="30.0" prefWidth="169.0" promptText="Masukkan Nominal" />
+      <Label layoutX="621.0" layoutY="359.0" text="Rp.">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="848.0" layoutY="353.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="Bayar" />
+      <Label layoutX="276.0" layoutY="106.0" text="Pembayaran SPP">
+         <font>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
    </children>
