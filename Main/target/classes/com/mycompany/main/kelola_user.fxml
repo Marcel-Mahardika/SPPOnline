@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -32,77 +33,14 @@
             </Label>
          </children>
       </Pane>
-      <TableView fx:id="tb_user" layoutX="624.0" layoutY="176.0" onMouseClicked="#click_action" prefHeight="345.0" prefWidth="451.0">
-        <columns>
-          <TableColumn fx:id="col_id" prefWidth="43.0" text="ID" />
-          <TableColumn fx:id="col_nama" prefWidth="117.0" text="Nama User" />
-            <TableColumn fx:id="col_anak" prefWidth="129.0" text="Nama Anak User" />
-            <TableColumn fx:id="col_alamat" prefWidth="159.0" text="Alamat" />
-            <TableColumn fx:id="col_username" prefWidth="135.0" text="Username" />
-            <TableColumn fx:id="col_password" prefWidth="125.0" text="Password" />
-            <TableColumn fx:id="col_telepon" prefWidth="117.0" text="No. Telp" />
-        </columns>
-      </TableView>
-      <Button fx:id="btn_insert" layoutX="290.0" layoutY="490.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Insert" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="btn_update" layoutX="395.0" layoutY="490.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Update" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="btn_delete" layoutX="501.0" layoutY="489.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Delete" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Label layoutX="291.0" layoutY="96.0" text="Kelola Data User">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Pane layoutY="72.0" prefHeight="328.0" prefWidth="242.0">
-         <children>
-            <Button layoutX="36.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="1. Kelola Akun User">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="menu_laporan" layoutX="36.0" layoutY="72.0" mnemonicParsing="false" onAction="#laporan" style="-fx-background-color: transparent;" text="2. Laporan Pembayaran">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Line endX="-100.0" endY="272.0" layoutX="344.0" layoutY="232.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
-         </children>
-      </Pane>
-      <ScrollPane layoutX="260.0" layoutY="177.0" prefHeight="291.0" prefWidth="349.0">
+      <ScrollPane layoutX="260.0" layoutY="176.0" prefHeight="296.0" prefWidth="349.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="350.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="575.0" prefWidth="350.0">
                <children>
-                  <VBox layoutX="141.0" layoutY="16.0" prefHeight="402.0" prefWidth="171.0" spacing="12.0">
+                  <VBox layoutX="141.0" layoutY="66.0" prefHeight="287.0" prefWidth="171.0" spacing="12.0">
                      <children>
                         <TextField fx:id="txt_id" />
                         <TextField fx:id="txt_nama" />
-                        <TextField fx:id="txt_anak" />
-                        <TextField fx:id="txt_alamat" />
                         <TextField fx:id="txt_username" />
                         <TextField fx:id="txt_password" />
                         <TextField fx:id="txt_telepon" />
@@ -138,7 +76,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox layoutX="29.0" layoutY="19.0" prefHeight="270.0" prefWidth="139.0" spacing="17.0">
+                  <VBox layoutX="29.0" layoutY="66.0" prefHeight="220.0" prefWidth="139.0" spacing="17.0">
                      <children>
                         <Label text="ID User">
                            <font>
@@ -146,16 +84,6 @@
                            </font>
                         </Label>
                         <Label text="Nama User">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Nama Anak">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Alamat">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -177,9 +105,158 @@
                         </Label>
                      </children>
                   </VBox>
+                  <Label layoutX="29.0" layoutY="22.0" text="Data User">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="29.0" layoutY="287.0" text="Data Siswa (Anak User)">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="29.0" layoutY="335.0" prefHeight="220.0" prefWidth="139.0" spacing="17.0">
+                     <children>
+                        <Label text="NIS">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Nama Siswa">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Kelas">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Usia">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Jenis Kelamin">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Alamat">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="141.0" layoutY="333.0" prefHeight="287.0" prefWidth="171.0" spacing="12.0">
+                     <children>
+                        <TextField fx:id="txt_nis" />
+                        <TextField fx:id="txt_anak" />
+                        <TextField fx:id="txt_kelas" />
+                        <TextField fx:id="txt_usia" />
+                        <ComboBox fx:id="cmbx_jenkel" prefHeight="25.0" prefWidth="177.0" />
+                        <TextField fx:id="txt_alamat" />
+                        <Label>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
+       <TableView fx:id="tb_user" layoutX="624.0" layoutY="176.0" onMouseClicked="#click_action" prefHeight="345.0" prefWidth="448.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="43.0" text="ID" />
+          <TableColumn fx:id="col_nama" prefWidth="127.0" text="Nama User" />
+            <TableColumn fx:id="col_username" prefWidth="125.0" text="Username" />
+            <TableColumn fx:id="col_password" prefWidth="125.0" text="Password" />
+            <TableColumn fx:id="col_telepon" prefWidth="130.0" text="No. Telp" />
+            <TableColumn fx:id="col_nis" prefWidth="84.0" text="NIS" />
+            <TableColumn fx:id="col_anak" prefWidth="225.0" text="Nama Siswa (Anak User)" />
+            <TableColumn fx:id="col_kelas" prefWidth="69.0" text="Kelas" />
+            <TableColumn fx:id="col_usia" prefWidth="62.0" text="Usia" />
+            <TableColumn fx:id="col_jenkel" prefWidth="121.0" text="Jenis Kelamin" />
+            <TableColumn fx:id="col_alamat" prefWidth="310.0" text="Alamat Tempat Tinggal" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn_insert" layoutX="290.0" layoutY="491.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Insert" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btn_update" layoutX="395.0" layoutY="491.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btn_delete" layoutX="501.0" layoutY="491.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="291.0" layoutY="96.0" text="Kelola Data User">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Pane layoutY="72.0" prefHeight="328.0" prefWidth="242.0">
+         <children>
+            <Button layoutX="36.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="1. Kelola Akun User">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="menu_laporan" layoutX="36.0" layoutY="72.0" mnemonicParsing="false" onAction="#laporan" style="-fx-background-color: transparent;" text="2. Laporan Pembayaran">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Line endX="-100.0" endY="272.0" layoutX="344.0" layoutY="232.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

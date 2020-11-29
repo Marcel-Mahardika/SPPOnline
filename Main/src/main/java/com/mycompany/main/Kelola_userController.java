@@ -27,6 +27,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.ComboBox;
 /**
  * FXML Controller class
  *
@@ -36,30 +37,46 @@ public class Kelola_userController implements Initializable {
 
     @FXML private Button btn_logout;
     @FXML private Button btn_kembali;
+    
+    //Textfield untuk user / orang tua
     @FXML private TextField txt_id;
     @FXML private TextField txt_nama;
-    @FXML private TextField txt_anak;
-    @FXML private TextField txt_alamat;
-    @FXML private TextField txt_telepon;
     @FXML private TextField txt_username;
     @FXML private TextField txt_password;
+    @FXML private TextField txt_telepon;
+    
+    //Textfield untuk anak user / pelajar / siswa
+    @FXML private TextField txt_nis;
+    @FXML private TextField txt_anak;
+    @FXML private TextField txt_kelas;
+    @FXML private TextField txt_usia;
+    @FXML private ComboBox<String> cmbx_jenkel;
+    @FXML private TextField txt_alamat;
+    
+    //Untuk tabel kolom
     @FXML private TableView<User> tb_user;
     @FXML private TableColumn<User, Integer> col_id;
     @FXML private TableColumn<User, String> col_nama;
-    @FXML private TableColumn<User, String> col_anak;
-    @FXML private TableColumn<User, String> col_alamat;
-    @FXML private TableColumn<User, String> col_telepon;
     @FXML private TableColumn<User, String> col_username;
     @FXML private TableColumn<User, String> col_password;
+    @FXML private TableColumn<User, String> col_telepon;
+    @FXML private TableColumn<User, Integer> col_nis;
+    @FXML private TableColumn<User, String> col_anak;
+    @FXML private TableColumn<User, String> col_kelas;
+    @FXML private TableColumn<User, Integer> col_usia;
+    @FXML private TableColumn<User, String> col_jenkel;
+    @FXML private TableColumn<User, String> col_alamat;
+    
+    //Untuk button CRUD User
     @FXML private Button btn_insert;
     @FXML private Button btn_update;
     @FXML private Button btn_delete;
     
-    @FXML
-    private Button menu_kelola_user;
+    @FXML private Button menu_kelola_user;
+    @FXML private Button menu_laporan;
     
-    @FXML
-    private Button menu_laporan;
+    //List ComboBox untuk menampilkan jenis kelamin 
+    ObservableList<String> jk_list = FXCollections.observableArrayList("Laki-Laki", "Perempuan");
     
     /**
      * Initializes the controller class.
@@ -70,10 +87,15 @@ public class Kelola_userController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        //memanggil list ComboBox
+        cmbx_jenkel.setItems(jk_list);
+        
+        //Fungsi showUser dipanggil disini supaya nanti bisa terlihat di tabel
         showUser();
     } 
     
-    //fungsi untuk mencari list user pada database
+    //Fungsi untuk mencari list user pada database
     public ObservableList<User> getUserList() {
         ObservableList<User> userList = FXCollections.observableArrayList();
         Connection conn = DBConnect.ConnDB();
@@ -85,7 +107,7 @@ public class Kelola_userController implements Initializable {
             rs = st.executeQuery(query);
             User user;
             while(rs.next()) {
-                user = new User(rs.getInt("id"), rs.getString("nama_user"), rs.getString("nama_anak_user"), rs.getString("alamat"), rs.getString("username"), rs.getString("password"), rs.getString("no_telp"));
+                user = new User(rs.getInt("id"), rs.getString("nama_user"), rs.getString("username"), rs.getString("password"), rs.getString("no_telp"), rs.getInt("nis"), rs.getString("nama_siswa"), rs.getString("kelas"), rs.getInt("usia"), rs.getString("jenis_kelamin"), rs.getString("alamat"));
                 userList.add(user);
             }
         }
@@ -95,22 +117,27 @@ public class Kelola_userController implements Initializable {
         return userList;    
     }
     
-    //fungsi untuk menampilkan list user yang ada dalam database
+    //Fungsi untuk menampilkan list user yang ada dalam database
     public void showUser() {
         ObservableList<User> list = getUserList();
         
         col_id.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         col_nama.setCellValueFactory(new PropertyValueFactory<User, String>("nama_user"));
-        col_anak.setCellValueFactory(new PropertyValueFactory<User, String>("nama_anak_user"));
-        col_alamat.setCellValueFactory(new PropertyValueFactory<User, String>("alamat"));
         col_username.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         col_password.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
         col_telepon.setCellValueFactory(new PropertyValueFactory<User, String>("no_telp"));
         
+        col_nis.setCellValueFactory(new PropertyValueFactory<User, Integer>("nis"));
+        col_anak.setCellValueFactory(new PropertyValueFactory<User, String>("nama_siswa"));
+        col_kelas.setCellValueFactory(new PropertyValueFactory<User, String>("kelas"));
+        col_usia.setCellValueFactory(new PropertyValueFactory<User, Integer>("usia"));
+        col_jenkel.setCellValueFactory(new PropertyValueFactory<User, String>("jenis_kelamin"));
+        col_alamat.setCellValueFactory(new PropertyValueFactory<User, String>("alamat"));
+        
         tb_user.setItems(list);
     }
     
-    //fungsi supaya command query bisa di execute
+    //Fungsi supaya command query untuk CRUD bisa di execute
     private void executeQuery(String query) {
         Connection conn = DBConnect.ConnDB();
         Statement st;
@@ -123,24 +150,22 @@ public class Kelola_userController implements Initializable {
         }
     }
     
-    //fungsi untuk insert user baru
+    //Fungsi untuk insert user baru
     private void insert() {
-        String query = "INSERT INTO user VALUES (" + txt_id.getText() + ",'" + txt_nama.getText() + "','" + txt_anak.getText() + "','" 
-                + txt_alamat.getText() + "','" + txt_username.getText() + "','" + txt_password.getText() + "','" + txt_telepon.getText() +"')"; 
+        String query = "INSERT INTO user VALUES (" + txt_id.getText() + ",'" + txt_nama.getText() + "','" + txt_username.getText() + "','" + txt_password.getText() + "','" + txt_telepon.getText() + "'," + txt_nis.getText() + ",'" + txt_anak.getText() + "','" + txt_kelas.getText() + "'," + txt_usia.getText() + ",'" + cmbx_jenkel.getValue() + "','" + txt_alamat.getText() + "')"; 
         executeQuery(query);    
         showUser();
     }
     
-    //fungsi untuk update user
+    //Fungsi untuk update user
     private void update() {
-        String query = "UPDATE user SET nama_user = '" + txt_nama.getText() + "', nama_anak_user = '" + txt_anak.getText() + 
-                "', alamat = '" + txt_alamat.getText() + "', username = '" + txt_username.getText() + "', password = '" + txt_password.getText() + 
-                "', no_telp = '" + txt_telepon.getText() + "' WHERE id = " + txt_id.getText() + " ";
+        String query = "UPDATE user SET nama_user = '" + txt_nama.getText() + "', username = '" + txt_username.getText() + "', password = '" + txt_password.getText() + 
+                "', no_telp = '" + txt_telepon.getText() + "', nis = " + txt_nis.getText() + ", nama_siswa = '" + txt_anak.getText() +"', kelas = '" + txt_kelas.getText() +"', usia = " + txt_usia.getText() +", jenis_kelamin = '" + cmbx_jenkel.getValue() +"', alamat = '" + txt_alamat.getText() + "' WHERE id = " + txt_id.getText() + " ";
         executeQuery(query);
         showUser();
     }
     
-    //fungsi untuk delete user
+    //Fungsi untuk delete user
     private void delete() {
         String query = "DELETE FROM user WHERE id = " + txt_id.getText() + " ";
         executeQuery(query);
@@ -149,6 +174,7 @@ public class Kelola_userController implements Initializable {
     
     //untuk button insert, update, deletenya supaya bekerja
     //dengan library ActionEvent
+    //kalau tanpa ActionEvent nanti buttonnya tidak berfungsi
     public void button_action(ActionEvent event) {
         if(event.getSource() == btn_insert) {
             insert();
@@ -161,23 +187,29 @@ public class Kelola_userController implements Initializable {
         }
     }
     
+    
     //untuk ketika admin klik salah satu data user dalam list maka data tersebut akan otomatis tertampil pada textfield :)
     //dengan library MouseEvent
     public void click_action(MouseEvent event) {
-        User user = tb_user.getSelectionModel().getSelectedItem();  //
+        User user = tb_user.getSelectionModel().getSelectedItem();  
+        
         
         //cetak di textfield
         //yang berisi tanda "" karena nilainya adalah integer
         txt_id.setText("" + user.getId());
         txt_nama.setText(user.getNama_user());
-        txt_anak.setText(user.getNama_anak_user());
-        txt_alamat.setText(user.getAlamat());
         txt_username.setText(user.getUsername());
         txt_password.setText(user.getPassword());
         txt_telepon.setText(user.getNo_telp());
+        txt_nis.setText("" + user.getNis());
+        txt_anak.setText(user.getNama_siswa());
+        txt_kelas.setText(user.getKelas());
+        txt_usia.setText("" + user.getUsia());
+        cmbx_jenkel.setValue(col_jenkel.getCellData(user));
+        txt_alamat.setText(user.getAlamat());
     }
     
-    //fungsi untuk logout
+    //Fungsi untuk logout
     public void logout() throws IOException, SQLException {
         try {
             Connection conn = DBConnect.CLoseDB();
@@ -190,10 +222,5 @@ public class Kelola_userController implements Initializable {
     public void laporan() throws IOException {
         App.setRoot("laporan_pembayaran");
     }
-    
-//    //fungsi untuk tombol kembali
-//    public void kembali() throws IOException {
-//        App.setRoot("app_admins");
-//    }
     
 }
