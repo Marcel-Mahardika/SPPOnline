@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import helper.DBConnect;    //import package DBConnect
 
 import java.io.IOException;
+import static javafx.application.Application.launch;
 
 /**
  * JavaFX App
@@ -20,7 +21,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 //        scene = new Scene(loadFXML("primary"), 640, 480);
-        scene = new Scene(loadFXML("primary"), 1115, 600);
+//        scene = new Scene(loadFXML("bayar_spp"), 1115, 600);
+//        scene = new Scene(loadFXML("bayar_spp"), 1115, 755);
+        scene = new Scene(loadFXML("bayar_spp"), 1115, 995);
         stage.setScene(scene);
         stage.show();
         stage.setTitle("SPP-Online");

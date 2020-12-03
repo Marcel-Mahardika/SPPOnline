@@ -193,7 +193,6 @@ public class Kelola_userController implements Initializable {
     public void click_action(MouseEvent event) {
         User user = tb_user.getSelectionModel().getSelectedItem();  
         
-        
         //cetak di textfield
         //yang berisi tanda "" karena nilainya adalah integer
         txt_id.setText("" + user.getId());
