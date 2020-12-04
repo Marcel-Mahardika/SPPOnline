@@ -94,7 +94,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="488.0" layoutY="686.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3e91b5;" text="Cetak Bukti Pembayaran" textFill="WHITE">
+      <Button fx:id="btn_cetak" layoutX="488.0" layoutY="686.0" mnemonicParsing="false" onAction="#Cetak" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3e91b5;" text="Cetak Bukti Pembayaran" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -104,7 +104,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbx_bulan" layoutX="789.0" layoutY="517.0" prefHeight="30.0" prefWidth="282.0" promptText="Pilih Bulan Pembayaran" style="-fx-background-color: #FFF; -fx-border-color: #bababa; -fx-border-radius: 5;" />
+      <ComboBox fx:id="cmbx_bulan" layoutX="789.0" layoutY="517.0" prefHeight="30.0" prefWidth="282.0" style="-fx-background-color: #FFF; -fx-border-color: #bababa; -fx-border-radius: 5;" />
       <Label layoutX="743.0" layoutY="522.0" text="Bulan">
          <font>
             <Font name="System Bold" size="14.0" />

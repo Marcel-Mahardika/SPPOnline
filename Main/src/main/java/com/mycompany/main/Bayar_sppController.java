@@ -11,12 +11,14 @@ import helper.DBConnect;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -39,6 +41,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * FXML Controller class
@@ -50,6 +58,7 @@ public class Bayar_sppController implements Initializable {
     
     @FXML private Button btn_logout;
     @FXML private Button btn_bayar;
+    @FXML private Button btn_cetak;
     
     @FXML private TextField txt_id;
     @FXML private TextField txt_pembayar;
@@ -294,6 +303,26 @@ public class Bayar_sppController implements Initializable {
         catch(SQLException e) {
             //kosong
         }
+    }
+    
+    
+    @FXML
+    public void Cetak(ActionEvent event) throws JRException {
+        // Connection conn = null;
+        // Class.forName("org.sqlite.JDBC");
+        // conn = DriverManager.getConnection("jdbc:sqlite:SPPOnline.db");
+        Connection conn = DBConnect.ConnDB();
+        try {
+            String report = ("D:\\My Documents\\RPL Fixed\\" + "SPPOnline\\Main\\src\\" + "main\\java\\com\\mycompany\\main\\Bukti_Pembayaran.jrxml");
+            HashMap hash = new HashMap();
+            hash.put("Kode", txt_nis.getText());
+            JasperReport JRpt = JasperCompileManager.compileReport(report);
+            JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, conn);
+            JasperViewer.viewReport(JPrint, false);
+        }
+        catch(Exception e) {
+            //kosong
+        } 
     }
 
 }

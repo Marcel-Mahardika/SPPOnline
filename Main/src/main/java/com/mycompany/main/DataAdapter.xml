@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>DB_Conn</name><driver>org.sqlite.JDBC</driver><username></username><password></password><savePassword>true</savePassword><url>jdbc:sqlite:D:\My Documents\RPL Fixed\SPPOnline\Main\SPPOnline.db</url><database></database><serverAddress></serverAddress></jdbcDataAdapter>

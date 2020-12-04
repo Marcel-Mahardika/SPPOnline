@@ -5,7 +5,9 @@ module com.mycompany.main {
     requires javafx.graphics;
     requires java.base;
     requires java.sql;
+    requires jasperreports;
 
     opens com.mycompany.main to javafx.fxml;
     exports com.mycompany.main;
+    
 }
