@@ -20,7 +20,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -32,6 +35,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -98,6 +102,7 @@ public class Bayar_sppController implements Initializable {
     @FXML private TableColumn<User, String> col_jenkel;
     @FXML private TableColumn<User, String> col_ortu;
       
+    
     //List ComboBox untuk menampilkan list bulan
     ObservableList<String> list_bulan = FXCollections.observableArrayList("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
     
@@ -117,10 +122,15 @@ public class Bayar_sppController implements Initializable {
         cmbx_bulan.setItems(list_bulan); 
         cmbx_bank.setItems(list_bank);
         
-        showUser();
         showBayar();
+        try {
+            showSiswa();
+        } catch (SQLException ex) {
+            Logger.getLogger(Bayar_sppController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }    
+    
     
     //menampilkan list siswa
      ObservableList<User> userList = FXCollections.observableArrayList();  
@@ -144,53 +154,41 @@ public class Bayar_sppController implements Initializable {
         return userList;    
     }
     
-    //menampilkan siswa pada tabel
-    public void showUser() {
-        ObservableList<User> list = getUserList();
-        
-        col_id.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
-        col_nis_siswa.setCellValueFactory(new PropertyValueFactory<User, Integer>("nis"));
-        col_nama_siswa.setCellValueFactory(new PropertyValueFactory<User, String>("nama_siswa"));
-        col_kelas_siswa.setCellValueFactory(new PropertyValueFactory<User, String>("kelas"));
-        col_alamat.setCellValueFactory(new PropertyValueFactory<User, String>("alamat"));
-        col_jenkel.setCellValueFactory(new PropertyValueFactory<User, String>("jenis_kelamin"));
-        col_ortu.setCellValueFactory(new PropertyValueFactory<User, String>("nama_user"));
-        
-        tb_siswa.setItems(list);
-        
-        //Fungsi untuk mencari data siswa padad tabel siswa
-        FilteredList<User> filteredData = new FilteredList<>(userList, s -> true);
-            txt_search.textProperty().addListener((observable, oldValue, newValue) -> {
-                filteredData.setPredicate(siswa -> {
-                    if(newValue == null || newValue.isEmpty()) {
-                        return true;
-                    }
-                    
-                    String lowerCaseFilter = newValue.toLowerCase();
-                    
-                    if(String.valueOf(siswa.getNis()).indexOf(lowerCaseFilter) != -1) {
-                        return true;
-                    }
-                    else if(siswa.getNama_siswa().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                        return true;
-                    }
-                    else {
-                        return false;
-                    }
-                    
-                });
-            });
-            
-            SortedList<User> sortedData = new SortedList<>(filteredData);
-            sortedData.comparatorProperty().bind(tb_siswa.comparatorProperty());
-            tb_siswa.setItems(sortedData);
-    }  
     
-    public void click_action(MouseEvent event) {
+    //Fungsi untuk menampilkan siswa berdaarkan username yang diinputkan saat login
+    public void showSiswa() throws SQLException {
+        Connection conn = DBConnect.ConnDB();
+        UserLoginController sh = new UserLoginController();
+        String ambilUser = sh.Username;
+        String query = "SELECT * FROM user WHERE username = '"+ ambilUser +"'";
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        try {
+            while(rs.next()) {
+                txt_nis.setText("" + rs.getInt("nis"));
+                txt_siswa.setText(rs.getString("nama_siswa"));
+                txt_kelas.setText(rs.getString("kelas"));
+                txt_pembayar.setText(rs.getString("nama_user"));
+                lbl_tagihan.setText("300000");   //karena biaya SPP per bulannya Rp. 300000
+            }
+        }
+        catch(SQLException e) {
+            e.getMessage();
+        }
+        
+        //mengatur bagian ttanggal supaya mengikuti tanggal yang ada di sistem pengguna
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        lbl_tanggal.setText(dtf.format(now));
+    }
+    
+    
+    public void click_action(MouseEvent event) throws SQLException {
         User user = tb_siswa.getSelectionModel().getSelectedItem(); 
         
         //cetak di textfield
         //yang berisi tanda "" karena nilainya adalah integer
+        txt_id.setText("" + user.getId());
         txt_nis.setText("" + user.getNis());
         txt_siswa.setText(user.getNama_siswa());
         txt_kelas.setText(user.getKelas());
@@ -204,7 +202,7 @@ public class Bayar_sppController implements Initializable {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDateTime now = LocalDateTime.now();
         lbl_tanggal.setText(dtf.format(now));
-       
+           
     }
     
     
@@ -230,6 +228,7 @@ public class Bayar_sppController implements Initializable {
         return bayarList;
     }
     
+    
     //menampilkan pembayaran (tersembunyi)
     public void showBayar() {
         ObservableList<Bayar> list = getBayarList();
@@ -249,6 +248,7 @@ public class Bayar_sppController implements Initializable {
         tb_bayar.setItems(list);
     }  
     
+    
     //Supaya fungsi bayar bisa berfungsi
     private void executeQuery(String query) {
         Connection conn = DBConnect.ConnDB();
@@ -262,12 +262,13 @@ public class Bayar_sppController implements Initializable {
         }
     }
      
+    
     //Fungsi untuk insert pembayaran baru ke database
     private void bayar() throws IOException {
-        
-        //Bagian Error Handling
+
+        //Bagian Error Handling jika ada textfield yang kosong
         Alert message = new Alert(AlertType.WARNING);
-        if(txt_nis.getText().isEmpty() || txt_siswa.getText().isEmpty() || txt_kelas.getText().isEmpty() || cmbx_bulan.getValue().isEmpty() || txt_nominal.getText().isEmpty() || cmbx_bank.getValue().isEmpty() || txt_rekening.getText().isEmpty() || txt_pembayar.getText().isEmpty()) {
+        if(txt_nis.getText().isEmpty() || txt_siswa.getText().isEmpty() || txt_kelas.getText().isEmpty() || txt_nominal.getText().isEmpty()  || txt_rekening.getText().isEmpty() || txt_pembayar.getText().isEmpty()) {
             message.setContentText("Maaf, Isian Tidak Boleh Ada yang Kosong!");
             message.setTitle("Error!");
             message.show(); 
@@ -278,11 +279,22 @@ public class Bayar_sppController implements Initializable {
             message.show(); 
         }
         else {
-            String query = "INSERT INTO pembayaran (nis,nama_anak,kelas,tanggal_bayar,tagihan,bulan,nominal,bank,no_rekening,nama_pembayar) VALUES (" + txt_nis.getText() + ",'" + txt_siswa.getText() +"','" + txt_kelas.getText() + "','" + lbl_tanggal.getText() + "'," + lbl_tagihan.getText() + ",'" + cmbx_bulan.getValue() + "'," + txt_nominal.getText() + ",'" + cmbx_bank.getValue() + "'," + txt_rekening.getText() + ",'" + txt_pembayar.getText() + "')";
-            executeQuery(query);  
-            showBayar();
+            Alert message2 = new Alert(AlertType.CONFIRMATION);
+            message2.setContentText("Apakah Anda Sudah Yakin Dengan Data Pembayaran Anda?");
+            message2.setTitle("Confirmation!");
+            Optional<ButtonType> result = message2.showAndWait();
+            if(result.get() == ButtonType.OK) {
+                String query = "INSERT INTO pembayaran (nis,nama_anak,kelas,tanggal_bayar,tagihan,bulan,nominal,bank,no_rekening,nama_pembayar) VALUES (" + txt_nis.getText() + ",'" + txt_siswa.getText() +"','" + txt_kelas.getText() + "','" + lbl_tanggal.getText() + "'," + lbl_tagihan.getText() + ",'" + cmbx_bulan.getValue() + "'," + txt_nominal.getText() + ",'" + cmbx_bank.getValue() + "'," + txt_rekening.getText() + ",'" + txt_pembayar.getText() + "')";
+                executeQuery(query);
+                showBayar();
+            }
+            else {
+                showBayar();
+            }
         }
+        
     }
+    
     
     //untuk button bayarnya supaya bekerja
     //dengan library ActionEvent
@@ -292,6 +304,7 @@ public class Bayar_sppController implements Initializable {
             bayar();
         }
     }
+    
     
     //Fungsi untuk button logout
     @FXML
@@ -306,23 +319,42 @@ public class Bayar_sppController implements Initializable {
     }
     
     
+    //Fungsi untuk mencetak bukti pembayaran
     @FXML
     public void Cetak(ActionEvent event) throws JRException {
-        // Connection conn = null;
-        // Class.forName("org.sqlite.JDBC");
-        // conn = DriverManager.getConnection("jdbc:sqlite:SPPOnline.db");
         Connection conn = DBConnect.ConnDB();
+        String queryNis = "SELECT * FROM pembayaran WHERE nis = '"+ txt_nis.getText() +"' ORDER BY id_pembayaran desc";   //mengambil data secara descending
         try {
-            String report = ("D:\\My Documents\\RPL Fixed\\" + "SPPOnline\\Main\\src\\" + "main\\java\\com\\mycompany\\main\\Bukti_Pembayaran.jrxml");
-            HashMap hash = new HashMap();
-            hash.put("Kode", txt_nis.getText());
-            JasperReport JRpt = JasperCompileManager.compileReport(report);
-            JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, conn);
-            JasperViewer.viewReport(JPrint, false);
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(queryNis);
+            Alert message = new Alert(AlertType.WARNING);
+            if(txt_nis.getText().isEmpty() || txt_siswa.getText().isEmpty() || txt_kelas.getText().isEmpty() || txt_nominal.getText().isEmpty()  || txt_rekening.getText().isEmpty() || txt_pembayar.getText().isEmpty()) {
+                message.setContentText("Maaf, Belum Bisa Cetak Bukti. Silakan Lakukan Pembayaran Terlebih Dahulu!");
+                message.setTitle("Error!");
+                message.show(); 
+            }
+            else if(rs.next() == false) {
+                message.setContentText("Maaf, Belum Bisa Cetak Bukti. Silakan Lakukan Pembayaran Terlebih Dahulu!");
+                message.setTitle("Error!");
+                message.show(); 
+            }
+            else {
+                try {
+                    String report = ("D:\\My Documents\\RPL Fixed\\SPPOnline\\Main\\src\\main\\java\\com\\mycompany\\main\\Bukti_Pembayaran.jrxml");
+                    HashMap hash = new HashMap();
+                    hash.put("Kode", txt_nis.getText());
+                    JasperReport JRpt = JasperCompileManager.compileReport(report);
+                    JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, conn);
+                    JasperViewer.viewReport(JPrint, false);
+                }
+                catch(Exception e) {
+                    //kosong
+                } 
+            }
         }
-        catch(Exception e) {
-            //kosong
-        } 
+        catch(SQLException e) {
+            e.getMessage();
+        }
     }
 
-}
+} 

@@ -54,7 +54,7 @@ public class App_adminsController implements Initializable {
     }
     
     public void laporan() throws IOException {
-        App.setRoot("laporan");
+        App.setRoot("laporan_pembayaran");
     }
     
     @Override

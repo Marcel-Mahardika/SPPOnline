@@ -36,8 +36,11 @@
                <children>
                   <Button fx:id="btn_bayarSPP" layoutX="36.0" layoutY="28.0" mnemonicParsing="false" onAction="#bayarSPP" style="-fx-background-color: transparent;" text="1. Bayar SPP">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="16.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </Pane>

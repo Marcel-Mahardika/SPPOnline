@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.Bayar_sppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="902.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.Bayar_sppController">
    <children>
       <Pane prefHeight="72.0" prefWidth="1116.0" style="-fx-background-color: #53c4f5;">
          <children>
@@ -49,40 +49,41 @@
          <children>
             <Button layoutX="36.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="1. Bayar SPP">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Line endX="-100.0" endY="426.0" layoutX="344.0" layoutY="232.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
-            <Label fx:id="txt_id_pembayaran" layoutX="146.0" layoutY="216.0" text="1" />
+            <Line endX="-100.0" endY="295.0" layoutX="344.0" layoutY="232.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
+            <Button layoutX="36.0" layoutY="74.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="2. History Pembayaran">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
-      <Label layoutX="277.0" layoutY="174.0" text="Cari Siswa">
+      <Label layoutX="277.0" layoutY="228.0" text="Nama Siswa">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_search" layoutX="433.0" layoutY="169.0" prefHeight="30.0" prefWidth="640.0" promptText="Cari Siswa Berdasarkan NIS, ataupun Nama Siswa" />
-      <Label layoutX="277.0" layoutY="387.0" text="Nama Siswa">
+      <TextField fx:id="txt_siswa" layoutX="432.0" layoutY="223.0" prefHeight="30.0" prefWidth="640.0" promptText="Masukkan Nama Siswa" />
+      <Label layoutX="277.0" layoutY="272.0" text="Kelas">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_siswa" layoutX="432.0" layoutY="382.0" prefHeight="30.0" prefWidth="640.0" promptText="Masukkan Nama Siswa" />
-      <Label layoutX="277.0" layoutY="431.0" text="Kelas">
+      <TextField fx:id="txt_kelas" layoutX="432.0" layoutY="267.0" prefHeight="30.0" prefWidth="640.0" promptText="Masukkan Kelas Siswa" />
+      <Label layoutX="276.0" layoutY="317.0" text="Tanggal Pembayaran">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_kelas" layoutX="432.0" layoutY="426.0" prefHeight="30.0" prefWidth="640.0" promptText="Masukkan Kelas Siswa" />
-      <Label layoutX="276.0" layoutY="476.0" text="Tanggal Pembayaran">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Button fx:id="btn_bayar" layoutX="275.0" layoutY="686.0" mnemonicParsing="false" onAction="#button_action" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3e91b5;" text="Bayar" textFill="WHITE">
+      <Button fx:id="btn_bayar" layoutX="275.0" layoutY="546.0" mnemonicParsing="false" onAction="#button_action" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3e91b5;" text="Bayar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -94,35 +95,38 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="btn_cetak" layoutX="488.0" layoutY="686.0" mnemonicParsing="false" onAction="#Cetak" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3e91b5;" text="Cetak Bukti Pembayaran" textFill="WHITE">
+      <Button fx:id="btn_cetak" layoutX="488.0" layoutY="546.0" mnemonicParsing="false" onAction="#Cetak" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3e91b5;" text="Cetak Bukti Pembayaran" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Label layoutX="276.0" layoutY="523.0" text="Tagihan Biaya">
+      <Label layoutX="276.0" layoutY="364.0" text="Tagihan Biaya">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbx_bulan" layoutX="789.0" layoutY="517.0" prefHeight="30.0" prefWidth="282.0" style="-fx-background-color: #FFF; -fx-border-color: #bababa; -fx-border-radius: 5;" />
-      <Label layoutX="743.0" layoutY="522.0" text="Bulan">
+      <ComboBox fx:id="cmbx_bulan" layoutX="789.0" layoutY="358.0" prefHeight="30.0" prefWidth="282.0" promptText="Pilih Bulan Pembayaran" style="-fx-background-color: #FFF; -fx-border-color: #bababa; -fx-border-radius: 5;" />
+      <Label layoutX="743.0" layoutY="363.0" text="Bulan">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_nominal" layoutX="431.0" layoutY="564.0" prefHeight="30.0" prefWidth="139.0" promptText="Masukkan Nominal" />
-      <Label layoutX="276.0" layoutY="569.0" text="Nominal Rp.">
+      <TextField fx:id="txt_nominal" layoutX="431.0" layoutY="405.0" prefHeight="30.0" prefWidth="139.0" promptText="Masukkan Nominal" />
+      <Label layoutX="276.0" layoutY="410.0" text="Nominal Rp.">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="275.0" layoutY="615.0" text="Nama Pembayar">
+      <Label layoutX="275.0" layoutY="456.0" text="Nama Pembayar">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_pembayar" layoutX="431.0" layoutY="610.0" prefHeight="30.0" prefWidth="640.0" promptText="Masukkan Nama Pembayar" />
-      <TableView fx:id="tb_bayar" layoutX="138.0" layoutY="784.0" prefHeight="200.0" prefWidth="931.0">
+      <TextField fx:id="txt_pembayar" layoutX="431.0" layoutY="451.0" prefHeight="30.0" prefWidth="640.0" promptText="Masukkan Nama Pembayar" />
+      <TableView fx:id="tb_bayar" layoutX="138.0" layoutY="660.0" prefHeight="200.0" prefWidth="931.0">
         <columns>
             <TableColumn fx:id="col_id_pembayaran" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="col_nis" prefWidth="83.0" text="NIS" />
@@ -137,43 +141,32 @@
             <TableColumn fx:id="col_nama_pembayar" prefWidth="250.0" text="Nama Pembayar" />
         </columns>
       </TableView>
-      <TableView fx:id="tb_siswa" layoutX="432.0" layoutY="213.0" onMouseClicked="#click_action" prefHeight="110.0" prefWidth="640.0">
-        <columns>
-          <TableColumn fx:id="col_id" prefWidth="48.0" text="ID" />
-          <TableColumn fx:id="col_nis_siswa" prefWidth="84.0" text="NIS" />
-            <TableColumn fx:id="col_nama_siswa" prefWidth="166.0" text="Nama Siswa" />
-            <TableColumn fx:id="col_kelas_siswa" prefWidth="65.0" text="Kelas" />
-            <TableColumn fx:id="col_alamat" prefWidth="277.0" text="Alamat" />
-            <TableColumn fx:id="col_jenkel" prefWidth="96.0" text="Jenis Kelamin" />
-            <TableColumn fx:id="col_ortu" prefWidth="181.0" text="Nama Orang Tua" />
-        </columns>
-      </TableView>
-      <ComboBox fx:id="cmbx_bank" layoutX="644.0" layoutY="564.0" prefHeight="30.0" prefWidth="127.0" promptText="Pilih Bank" style="-fx-background-color: #FFF; -fx-border-color: #bababa; -fx-border-radius: 5;" />
-      <Label layoutX="603.0" layoutY="569.0" text="Bank">
+      <ComboBox fx:id="cmbx_bank" layoutX="644.0" layoutY="405.0" prefHeight="30.0" prefWidth="127.0" promptText="Pilih Bank" style="-fx-background-color: #FFF; -fx-border-color: #bababa; -fx-border-radius: 5;" />
+      <Label layoutX="603.0" layoutY="410.0" text="Bank">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_rekening" layoutX="897.0" layoutY="564.0" prefHeight="30.0" prefWidth="175.0" promptText="Masukkan Nomor" />
-      <Label layoutX="800.0" layoutY="569.0" text="No. Rekening">
+      <TextField fx:id="txt_rekening" layoutX="897.0" layoutY="405.0" prefHeight="30.0" prefWidth="175.0" promptText="Masukkan Nomor" />
+      <Label layoutX="800.0" layoutY="410.0" text="No. Rekening">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="277.0" layoutY="343.0" text="NIS Siswa">
+      <Label layoutX="277.0" layoutY="184.0" text="NIS Siswa">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_nis" layoutX="432.0" layoutY="338.0" prefHeight="30.0" prefWidth="640.0" promptText="Masukkan NIS Siswa" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="431.0" layoutY="472.0" stroke="#bababa" strokeType="INSIDE" width="282.0" />
-      <Label fx:id="lbl_tanggal" layoutX="440.0" layoutY="478.0" textFill="#0d0000" />
-      <Label layoutX="743.0" layoutY="477.0" text="Format : Hari/Tanggal/Bulan">
+      <TextField fx:id="txt_nis" layoutX="432.0" layoutY="179.0" prefHeight="30.0" prefWidth="640.0" promptText="Masukkan NIS Siswa" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="431.0" layoutY="313.0" stroke="#bababa" strokeType="INSIDE" width="282.0" />
+      <Label fx:id="lbl_tanggal" layoutX="440.0" layoutY="319.0" textFill="#0d0000" />
+      <Label layoutX="743.0" layoutY="318.0" text="Format : Hari/Tanggal/Bulan">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="431.0" layoutY="518.0" stroke="#bababa" strokeType="INSIDE" width="282.0" />
-      <Label fx:id="lbl_tagihan" layoutX="440.0" layoutY="524.0" textFill="#0d0000" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutX="431.0" layoutY="359.0" stroke="#bababa" strokeType="INSIDE" width="282.0" />
+      <Label fx:id="lbl_tagihan" layoutX="440.0" layoutY="365.0" textFill="#0d0000" />
    </children>
 </AnchorPane>

@@ -19,7 +19,7 @@
                      <children>
                         <Button fx:id="menu_kelola_user" layoutX="36.0" layoutY="28.0" mnemonicParsing="false" onAction="#kelola_user" style="-fx-background-color: transparent;" text="1. Kelola Akun User">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -30,7 +30,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
                         <Line endX="-100.0" endY="272.0" layoutX="344.0" layoutY="232.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />

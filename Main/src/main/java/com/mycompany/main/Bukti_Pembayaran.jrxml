@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA[$P{Kode}]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
-		<![CDATA[SELECT * FROM pembayaran WHERE nis = $P{Kode}]]>
+		<![CDATA[SELECT * FROM pembayaran WHERE nis = $P{Kode} ORDER BY id_pembayaran DESC]]>
 	</queryString>
 	<field name="nis" class="java.lang.Object">
 		<property name="com.jaspersoft.studio.field.name" value="nis"/>
