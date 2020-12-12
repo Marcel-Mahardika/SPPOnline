@@ -21,23 +21,17 @@ import javafx.scene.control.Label;
  *
  * @author IMahardika
  */
+
 public class App_adminsController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
     
-    @FXML
-    private Button btn_logout;
-    
-    @FXML
-    private Label lbl_admin;
-    
-    @FXML
-    private Button menu_kelola_user;
-    
-    @FXML
-    private Button menu_laporan;
+    @FXML private Button btn_logout;
+    @FXML private Label lbl_admin; 
+    @FXML private Button menu_kelola_user;
+    @FXML private Button menu_laporan;
     
     public void logout() throws IOException, SQLException {
         try {

@@ -78,6 +78,9 @@ public class Kelola_userController implements Initializable {
     //List ComboBox untuk menampilkan jenis kelamin 
     ObservableList<String> jk_list = FXCollections.observableArrayList("Laki-Laki", "Perempuan");
     
+    //Untuk menghubungkan fungsi dengan DB
+    Connection conn = DBConnect.ConnDB();
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -98,7 +101,7 @@ public class Kelola_userController implements Initializable {
     //Fungsi untuk mencari list user pada database
     public ObservableList<User> getUserList() {
         ObservableList<User> userList = FXCollections.observableArrayList();
-        Connection conn = DBConnect.ConnDB();
+//        Connection conn = DBConnect.ConnDB();
         String query = "SELECT * FROM user";
         Statement st;
         ResultSet rs;
@@ -139,7 +142,7 @@ public class Kelola_userController implements Initializable {
     
     //Fungsi supaya command query untuk CRUD bisa di execute
     private void executeQuery(String query) {
-        Connection conn = DBConnect.ConnDB();
+//        Connection conn = DBConnect.ConnDB();
         Statement st;
         try {
             st = conn.createStatement();
@@ -209,12 +212,12 @@ public class Kelola_userController implements Initializable {
     }
     
     //Fungsi untuk logout
-    public void logout() throws IOException, SQLException {
+    public void logout() throws IOException {
         try {
-            Connection conn = DBConnect.CLoseDB();
+//            Connection conn = DBConnect.CLoseDB();
             App.setRoot("admin_login");
         }
-        catch(SQLException e) {
+        catch(Exception e) {
         }
     }
     

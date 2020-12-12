@@ -3,49 +3,84 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.AppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="1115.0" style="-fx-background-color: #f8f8f8;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.AppController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="1115.0">
-         <top>
-            <Pane prefHeight="72.0" prefWidth="1510.0" style="-fx-background-color: #53c4f5;" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="btn_logout" layoutX="1006.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Label layoutX="502.0" layoutY="19.0" text="SPP-Online" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-         </top>
-         <left>
-            <Pane prefHeight="328.0" prefWidth="242.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="btn_bayarSPP" layoutX="36.0" layoutY="28.0" mnemonicParsing="false" onAction="#bayarSPP" style="-fx-background-color: transparent;" text="1. Bayar SPP">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-            </Pane>
-         </left>
-      </BorderPane>
-      <Line endX="-100.0" endY="272.0" layoutX="344.0" layoutY="306.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
+      <Pane layoutX="245.0" prefHeight="55.0" prefWidth="870.0" style="-fx-background-color: #FFF;" />
+      <Pane prefHeight="625.0" prefWidth="245.0" style="-fx-background-color: #53c4f5;">
+         <children>
+            <Button alignment="TOP_LEFT" layoutX="24.0" layoutY="277.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="       History Pembayaran" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="92.0" layoutY="59.0" text="SPP-Online" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="82.0" fitWidth="93.0" layoutX="12.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@RPL-LOGO.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_logout" alignment="TOP_LEFT" layoutY="587.0" mnemonicParsing="false" onAction="#logout" prefHeight="37.0" prefWidth="245.0" style="-fx-background-color: #3e91b5; -fx-background-radius: 0;" text="                Logout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Line endX="100.0" layoutX="123.0" layoutY="150.0" opacity="0.6" startX="-100.0" stroke="WHITE" />
+            <Button alignment="TOP_LEFT" layoutX="24.0" layoutY="185.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: #f8f8f8;" text="       Home" textFill="#53c4f5">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="37.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@history%20putih.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_bayarSPP" alignment="TOP_LEFT" layoutX="24.0" layoutY="230.0" mnemonicParsing="false" onAction="#bayarSPP" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="       Pembayaran SPP" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="37.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pembayaran%20putih.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="37.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home%20biru.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="39.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@keluar.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e91b5" height="7.0" layoutY="582.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="245.0" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

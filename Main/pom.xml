@@ -29,10 +29,7 @@
             <artifactId>org-jdesktop-layout</artifactId>
             <version>RELEASE65</version>
         </dependency>
-
-
-
-
+        
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>

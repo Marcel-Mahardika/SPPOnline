@@ -16,20 +16,13 @@ import javafx.stage.Stage;
 
 public class AdminLoginController {
     
-    @FXML
-    private Pane panel_login;
+    @FXML private Pane panel_login;
+    @FXML private TextField txt_username; 
+    @FXML private Button btn_login;
+    @FXML private Button btn_kembali;
+    @FXML private PasswordField txt_password;
     
-    @FXML
-    private TextField txt_username;
-    
-    @FXML
-    private Button btn_login;
-
-    @FXML
-    private Button btn_kembali;
-
-    @FXML
-    private PasswordField txt_password;
+    Connection conn = DBConnect.ConnDB();
     
     @FXML
     private void switchToPrimary() throws IOException {
@@ -38,8 +31,7 @@ public class AdminLoginController {
     
     
     public void login() throws SQLException, IOException{
-        Connection conn = DBConnect.ConnDB();
-   
+//        Connection conn = DBConnect.ConnDB();
         try {
             String Username = txt_username.getText();
             String Password = txt_password.getText();
@@ -70,7 +62,6 @@ public class AdminLoginController {
                 message.show(); 
             }
         }
-        
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }

@@ -11,7 +11,7 @@ import helper.DBConnect;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -63,6 +63,7 @@ public class Bayar_sppController implements Initializable {
     @FXML private Button btn_logout;
     @FXML private Button btn_bayar;
     @FXML private Button btn_cetak;
+    @FXML private Button btn_home;
     
     @FXML private TextField txt_id;
     @FXML private TextField txt_pembayar;
@@ -109,6 +110,9 @@ public class Bayar_sppController implements Initializable {
     //List ComboBox untuk menampilka list bank
     ObservableList<String> list_bank = FXCollections.observableArrayList("BNI", "BCA", "BRI", "Mandiri", "Danamon", "Permata", "Lainnya");
     
+    //Untuk menghubungkan fungsi dengan DB
+    Connection conn = DBConnect.ConnDB();
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -135,7 +139,7 @@ public class Bayar_sppController implements Initializable {
     //menampilkan list siswa
      ObservableList<User> userList = FXCollections.observableArrayList();  
      public ObservableList<User> getUserList() {
-        Connection conn = DBConnect.ConnDB();
+//        Connection conn = DBConnect.ConnDB();
         String query = "SELECT * FROM user";
         Statement st;
         ResultSet rs;
@@ -153,11 +157,11 @@ public class Bayar_sppController implements Initializable {
         }
         return userList;    
     }
-    
+     
     
     //Fungsi untuk menampilkan siswa berdaarkan username yang diinputkan saat login
     public void showSiswa() throws SQLException {
-        Connection conn = DBConnect.ConnDB();
+//        Connection conn = DBConnect.ConnDB();
         UserLoginController sh = new UserLoginController();
         String ambilUser = sh.Username;
         String query = "SELECT * FROM user WHERE username = '"+ ambilUser +"'";
@@ -181,7 +185,6 @@ public class Bayar_sppController implements Initializable {
         LocalDateTime now = LocalDateTime.now();
         lbl_tanggal.setText(dtf.format(now));
     }
-    
     
     public void click_action(MouseEvent event) throws SQLException {
         User user = tb_siswa.getSelectionModel().getSelectedItem(); 
@@ -209,7 +212,7 @@ public class Bayar_sppController implements Initializable {
     //menampilkan list pembayaran (tersembunyi)
     public ObservableList<Bayar> getBayarList() {
     ObservableList<Bayar> bayarList = FXCollections.observableArrayList();
-        Connection conn = DBConnect.ConnDB();
+//        Connection conn = DBConnect.ConnDB();
         String query = "SELECT * FROM pembayaran";
         Statement st;
         ResultSet rs;
@@ -227,7 +230,6 @@ public class Bayar_sppController implements Initializable {
         }
         return bayarList;
     }
-    
     
     //menampilkan pembayaran (tersembunyi)
     public void showBayar() {
@@ -247,11 +249,9 @@ public class Bayar_sppController implements Initializable {
         
         tb_bayar.setItems(list);
     }  
-    
-    
-    //Supaya fungsi bayar bisa berfungsi
+     
+    //Supaya fungsi bayar bisa berfungsi  
     private void executeQuery(String query) {
-        Connection conn = DBConnect.ConnDB();
         Statement st;
         try {
             st = conn.createStatement();
@@ -261,7 +261,6 @@ public class Bayar_sppController implements Initializable {
             e.printStackTrace();
         }
     }
-     
     
     //Fungsi untuk insert pembayaran baru ke database
     private void bayar() throws IOException {
@@ -284,9 +283,18 @@ public class Bayar_sppController implements Initializable {
             message2.setTitle("Confirmation!");
             Optional<ButtonType> result = message2.showAndWait();
             if(result.get() == ButtonType.OK) {
-                String query = "INSERT INTO pembayaran (nis,nama_anak,kelas,tanggal_bayar,tagihan,bulan,nominal,bank,no_rekening,nama_pembayar) VALUES (" + txt_nis.getText() + ",'" + txt_siswa.getText() +"','" + txt_kelas.getText() + "','" + lbl_tanggal.getText() + "'," + lbl_tagihan.getText() + ",'" + cmbx_bulan.getValue() + "'," + txt_nominal.getText() + ",'" + cmbx_bank.getValue() + "'," + txt_rekening.getText() + ",'" + txt_pembayar.getText() + "')";
-                executeQuery(query);
-                showBayar();
+            try {
+            String query = "INSERT INTO pembayaran (nis,nama_anak,kelas,tanggal_bayar,tagihan,bulan,nominal,bank,no_rekening,"
+                    + "nama_pembayar) VALUES (" + txt_nis.getText() + ",'" + txt_siswa.getText() +"','" + txt_kelas.getText()
+                    + "','" + lbl_tanggal.getText() + "'," + lbl_tagihan.getText() + ",'" + cmbx_bulan.getValue()
+                    + "'," + txt_nominal.getText() + ",'" + cmbx_bank.getValue() + "'," + txt_rekening.getText()
+                    + ",'" + txt_pembayar.getText() + "')";
+            executeQuery(query);  
+            showBayar();
+            }
+            catch(Exception e) {
+                
+            }
             }
             else {
                 showBayar();
@@ -296,7 +304,7 @@ public class Bayar_sppController implements Initializable {
     }
     
     
-    //untuk button bayarnya supaya bekerja
+     //untuk button bayarnya supaya bekerja
     //dengan library ActionEvent
     //kalau tanpa ActionEvent nanti buttonnya tidak berfungsi
     public void button_action(ActionEvent event) throws IOException {
@@ -305,24 +313,23 @@ public class Bayar_sppController implements Initializable {
         }
     }
     
-    
     //Fungsi untuk button logout
     @FXML
-    public void logout() throws IOException, SQLException {
+    public void logout() throws IOException {
         try {
-            Connection conn = DBConnect.CLoseDB();
+//            Connection conn = DBConnect.CLoseDB();
             App.setRoot("user_login");
         }
-        catch(SQLException e) {
+        catch(Exception e) {
             //kosong
         }
     }
     
-    
+  
     //Fungsi untuk mencetak bukti pembayaran
     @FXML
     public void Cetak(ActionEvent event) throws JRException {
-        Connection conn = DBConnect.ConnDB();
+//        Connection conn = DBConnect.ConnDB();
         String queryNis = "SELECT * FROM pembayaran WHERE nis = '"+ txt_nis.getText() +"' ORDER BY id_pembayaran desc";   //mengambil data secara descending
         try {
             Statement st = conn.createStatement();
@@ -355,6 +362,12 @@ public class Bayar_sppController implements Initializable {
         catch(SQLException e) {
             e.getMessage();
         }
+    }
+    
+    
+    //Fungsi untuk pindah ke halaman home
+    public void Home() throws IOException {
+        App.setRoot("user_dashboard");
     }
 
 } 

@@ -25,13 +25,8 @@ import javafx.stage.Stage;
  * @author IMahardika
  */
 public class AppController implements Initializable {
-
-
-    @FXML
-    private Button btn_logout;
-    
-    @FXML
-    private Button btn_bayarSPP;
+    @FXML private Button btn_logout;
+    @FXML private Button btn_bayarSPP;
     
     /**
      * Initializes the controller class.

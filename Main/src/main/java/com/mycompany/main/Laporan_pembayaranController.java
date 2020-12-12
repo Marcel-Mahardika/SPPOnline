@@ -56,12 +56,17 @@ public class Laporan_pembayaranController implements Initializable {
     @FXML private TableColumn<Bayar, String> col_bank;
     @FXML private TableColumn<Bayar, Long> col_rekening;
     @FXML private TableColumn<Bayar, String> col_nama_pembayar;
+    
     /**
      * Initializes the controller class.
      */
     
      //List ComboBox untuk menampilkan list bulan
     ObservableList<String> list_bulan = FXCollections.observableArrayList("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+    
+    //Untuk menghubungkan fungsi dengan DB
+    Connection conn = DBConnect.ConnDB();
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -74,7 +79,7 @@ public class Laporan_pembayaranController implements Initializable {
     //menampilkan list pembayaran (tersembunyi)
     public ObservableList<Bayar> getBayarList() {
     ObservableList<Bayar> bayarList = FXCollections.observableArrayList();
-        Connection conn = DBConnect.ConnDB();
+//        Connection conn = DBConnect.ConnDB();
         String query = "SELECT * FROM pembayaran";
         Statement st;
         ResultSet rs;
@@ -112,10 +117,11 @@ public class Laporan_pembayaranController implements Initializable {
         
         tb_bayar.setItems(list);
     }  
+   
     
     @FXML
     public void Cetak(ActionEvent event) throws JRException {
-        Connection conn = DBConnect.ConnDB();
+//        Connection conn = DBConnect.ConnDB();
         String kueri = "SELECT * FROM pembayaran WHERE bulan = '"+ cmbx_bulan.getValue() +"' ";
         try {
             Statement st = conn.createStatement();
@@ -135,12 +141,12 @@ public class Laporan_pembayaranController implements Initializable {
     
     
     @FXML
-    public void logout() throws IOException, SQLException {
+    public void logout() throws IOException {
         try {
             Connection conn = DBConnect.CLoseDB();
             App.setRoot("admin_login");
         }
-        catch(SQLException e) {
+        catch(Exception e) {
         }
     }
     

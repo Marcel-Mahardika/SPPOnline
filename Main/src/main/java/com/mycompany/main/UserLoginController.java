@@ -28,6 +28,9 @@ public class UserLoginController {
     @FXML private Button btn_login;
     @FXML private Button btn_kembali;
     @FXML private PasswordField txt_password;  
+    
+    //Untuk menghubungkan fungsi dengan DB
+//    Connection conn = DBConnect.ConnDB();
 
     @FXML
     private void switchToPrimary() throws IOException {
