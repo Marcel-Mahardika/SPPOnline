@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 import helper.DBConnect;    //import package DBConnect
 
 import java.io.IOException;
-import static javafx.application.Application.launch;
 
 /**
  * JavaFX App
  */
+
 public class App extends Application {
 
     private static Scene scene;
@@ -22,8 +22,8 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 //        scene = new Scene(loadFXML("primary"), 640, 480);
 //        scene = new Scene(loadFXML("bayar_spp"), 1115, 600);
+//        scene = new Scene(loadFXML("user_login"), 1115, 755);
         scene = new Scene(loadFXML("primary"), 1115, 625);
-//        scene = new Scene(loadFXML("user_login"), 1115, 860);
         stage.setScene(scene);
         stage.show();
         stage.setTitle("SPP-Online");

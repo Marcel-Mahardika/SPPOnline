@@ -8,42 +8,33 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.Kelola_userController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="1115.0" style="-fx-background-color: #f8f8f8;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.Kelola_userController">
    <children>
-      <Pane prefHeight="72.0" prefWidth="1116.0" style="-fx-background-color: #53c4f5;">
+      <Pane layoutX="272.0" layoutY="125.0" prefHeight="422.0" prefWidth="810.0" style="-fx-background-color: #FFF; -fx-background-radius: 3;">
          <children>
-            <Button fx:id="btn_logout" layoutX="1006.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Label layoutX="502.0" layoutY="19.0" text="SPP-Online" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <ScrollPane layoutX="260.0" layoutY="176.0" prefHeight="296.0" prefWidth="349.0">
+            <TextField fx:id="txt_search" layoutX="382.0" layoutY="32.0" prefHeight="30.0" prefWidth="401.0" promptText="Cari User Berdasarkan Nama User atau Nama Siswa" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+         </children></Pane>
+      <Pane layoutX="245.0" prefHeight="55.0" prefWidth="870.0" style="-fx-background-color: #FFF;" />
+      <ScrollPane layoutX="299.0" layoutY="157.0" prefHeight="295.0" prefWidth="333.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="575.0" prefWidth="350.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="596.0" prefWidth="318.0" style="-fx-background-color: #FFF;">
                <children>
-                  <VBox layoutX="141.0" layoutY="66.0" prefHeight="287.0" prefWidth="171.0" spacing="12.0">
+                  <VBox layoutX="130.0" layoutY="76.0" prefHeight="287.0" prefWidth="171.0" spacing="12.0">
                      <children>
-                        <TextField fx:id="txt_id" />
-                        <TextField fx:id="txt_nama" />
-                        <TextField fx:id="txt_username" />
-                        <TextField fx:id="txt_password" />
-                        <TextField fx:id="txt_telepon" />
+                        <TextField fx:id="txt_id" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+                        <TextField fx:id="txt_nama" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+                        <TextField fx:id="txt_username" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+                        <TextField fx:id="txt_password" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+                        <TextField fx:id="txt_telepon" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
                         <Label>
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -76,7 +67,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox layoutX="29.0" layoutY="66.0" prefHeight="220.0" prefWidth="139.0" spacing="17.0">
+                  <VBox layoutX="18.0" layoutY="76.0" prefHeight="220.0" prefWidth="139.0" spacing="20.0">
                      <children>
                         <Label text="ID User">
                            <font>
@@ -105,17 +96,17 @@
                         </Label>
                      </children>
                   </VBox>
-                  <Label layoutX="29.0" layoutY="22.0" text="Data User">
+                  <Label layoutX="18.0" layoutY="22.0" text="Data User">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="29.0" layoutY="287.0" text="Data Siswa (Anak User)">
+                  <Label layoutX="18.0" layoutY="287.0" text="Data Siswa (Anak User)">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <VBox layoutX="29.0" layoutY="335.0" prefHeight="220.0" prefWidth="139.0" spacing="17.0">
+                  <VBox layoutX="18.0" layoutY="345.0" prefHeight="220.0" prefWidth="139.0" spacing="19.0">
                      <children>
                         <Label text="NIS">
                            <font>
@@ -149,14 +140,14 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox layoutX="141.0" layoutY="333.0" prefHeight="287.0" prefWidth="171.0" spacing="12.0">
+                  <VBox layoutX="130.0" layoutY="343.0" prefHeight="287.0" prefWidth="171.0" spacing="12.0">
                      <children>
-                        <TextField fx:id="txt_nis" />
-                        <TextField fx:id="txt_anak" />
-                        <TextField fx:id="txt_kelas" />
-                        <TextField fx:id="txt_usia" />
-                        <ComboBox fx:id="cmbx_jenkel" prefHeight="25.0" prefWidth="177.0" />
-                        <TextField fx:id="txt_alamat" />
+                        <TextField fx:id="txt_nis" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+                        <TextField fx:id="txt_anak" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+                        <TextField fx:id="txt_kelas" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+                        <TextField fx:id="txt_usia" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+                        <ComboBox fx:id="cmbx_jenkel" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+                        <TextField fx:id="txt_alamat" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
                         <Label>
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -189,11 +180,13 @@
                         </Label>
                      </children>
                   </VBox>
+                  <Line endX="183.0" layoutX="118.0" layoutY="56.0" smooth="false" startX="-100.0" stroke="#bababa" />
+                  <Line endX="183.0" layoutX="118.0" layoutY="322.0" smooth="false" startX="-100.0" stroke="#bababa" />
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
-       <TableView fx:id="tb_user" layoutX="624.0" layoutY="176.0" onMouseClicked="#click_action" prefHeight="345.0" prefWidth="448.0">
+       <TableView fx:id="tb_user" layoutX="654.0" layoutY="207.0" onMouseClicked="#click_action" prefHeight="295.0" prefWidth="401.0">
         <columns>
           <TableColumn fx:id="col_id" prefWidth="43.0" text="ID" />
           <TableColumn fx:id="col_nama" prefWidth="127.0" text="Nama User" />
@@ -208,7 +201,7 @@
             <TableColumn fx:id="col_alamat" prefWidth="310.0" text="Alamat Tempat Tinggal" />
         </columns>
       </TableView>
-      <Button fx:id="btn_insert" layoutX="290.0" layoutY="491.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Insert" textFill="WHITE">
+      <Button fx:id="btn_insert" layoutX="312.0" layoutY="472.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Insert" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -216,7 +209,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btn_update" layoutX="395.0" layoutY="491.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Update" textFill="WHITE">
+      <Button fx:id="btn_update" layoutX="422.0" layoutY="472.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -224,7 +217,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btn_delete" layoutX="501.0" layoutY="491.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Delete" textFill="WHITE">
+      <Button fx:id="btn_delete" layoutX="532.0" layoutY="472.0" mnemonicParsing="false" onAction="#button_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3e91b5;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -232,14 +225,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="291.0" layoutY="96.0" text="Kelola Data User">
+      <Label layoutX="271.0" layoutY="76.0" text="Kelola Data User" textFill="#686f82">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Pane layoutY="72.0" prefHeight="328.0" prefWidth="242.0">
+      <Pane prefHeight="625.0" prefWidth="245.0" style="-fx-background-color: #53c4f5;">
          <children>
-            <Button layoutX="36.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="1. Kelola Akun User">
+            <Button alignment="TOP_LEFT" layoutX="24.0" layoutY="230.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: #f8f8f8;" text="        Kelola Akun User" textFill="#53c4f5">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -247,7 +240,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="menu_laporan" layoutX="36.0" layoutY="72.0" mnemonicParsing="false" onAction="#laporan" style="-fx-background-color: transparent;" text="2. Laporan Pembayaran">
+            <Button fx:id="menu_laporan" alignment="TOP_LEFT" layoutX="24.0" layoutY="277.0" mnemonicParsing="false" onAction="#laporan" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="        Laporan Pembayaran" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -255,8 +248,55 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Line endX="-100.0" endY="272.0" layoutX="344.0" layoutY="232.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
+            <Line endX="100.0" layoutX="123.0" layoutY="150.0" opacity="0.6" startX="-100.0" stroke="WHITE" />
+            <ImageView fitHeight="82.0" fitWidth="93.0" layoutX="12.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@RPL-LOGO.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_logout" alignment="TOP_LEFT" layoutY="587.0" mnemonicParsing="false" onAction="#logout" prefHeight="37.0" prefWidth="245.0" style="-fx-background-color: #3e91b5; -fx-background-radius: 0;" text="                Logout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="39.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@keluar.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e91b5" height="7.0" layoutY="582.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="245.0" />
+            <Label layoutX="92.0" layoutY="59.0" text="SPP-Online" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_home" alignment="TOP_LEFT" layoutX="24.0" layoutY="185.0" mnemonicParsing="false" onAction="#home" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="        Home" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
+      <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="37.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@home%20putih.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="32.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@user%20biru.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="24.0" fitWidth="25.0" layoutX="39.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@laporan%20putih.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

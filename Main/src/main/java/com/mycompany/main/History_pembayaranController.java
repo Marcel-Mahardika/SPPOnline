@@ -6,6 +6,8 @@
 
 package com.mycompany.main;
 
+import com.mycompany.main.App;
+import com.mycompany.main.Bayar;
 import helper.DBConnect;
 import java.io.IOException;
 import java.net.URL;
@@ -15,15 +17,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.fxml.Initializable;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -40,14 +43,14 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author IMahardika
  */
 
-public class Laporan_pembayaranController implements Initializable {
+public class History_pembayaranController implements Initializable {
 
-
+    @FXML private Label lbl_user;
     @FXML private Button btn_logout;
-    @FXML private Button menu_kelola_user;
-    @FXML private Button menu_laporan;
     @FXML private Button btn_home;
-            
+    @FXML private Button btn_bayar;
+    @FXML private Button btn_cetak;
+    
     @FXML private ComboBox<String> cmbx_bulan;
     @FXML private TableView<Bayar> tb_bayar;
     @FXML private TableColumn<Bayar, Integer> col_id_pembayaran;
@@ -78,14 +81,46 @@ public class Laporan_pembayaranController implements Initializable {
         // TODO
         cmbx_bulan.setItems(list_bulan); 
         showBayar();
+        
+        try {
+            showGreetings();
+        } catch (SQLException ex) {
+            Logger.getLogger(History_pembayaranController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }  
+    
+    
+    //Fungsi untuk menampilkan nama pengguna di bagian pojok kanan atas aplikasi
+    public void showGreetings() throws SQLException {
+        UserLoginController sh = new UserLoginController();
+        String ambilUser = sh.Username;
+        String query = "SELECT nama_user FROM user WHERE username = '"+ ambilUser +"'";
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(query); 
+        try {
+            while(rs.next()) {
+                lbl_user.setText(rs.getString("nama_user"));
+            }
+        }
+        catch(SQLException e) {
+            e.getMessage();
+        }
+    }
     
     
     //menampilkan list pembayaran (tersembunyi)
     public ObservableList<Bayar> getBayarList() {
     ObservableList<Bayar> bayarList = FXCollections.observableArrayList();
-        // Connection conn = DBConnect.ConnDB();
-        String query = "SELECT * FROM pembayaran";
+    // Connection conn = DBConnect.ConnDB();
+    
+        //memanggil fungsi showGreetings supaya bisa mencetak tabel yang sesuai dengan user login
+        try {
+            showGreetings();
+        } catch (SQLException ex) {
+            Logger.getLogger(History_pembayaranController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String query = "SELECT * FROM pembayaran WHERE nama_pembayar = '"+ lbl_user.getText() +"' ";
         Statement st;
         ResultSet rs;
         try {
@@ -127,16 +162,23 @@ public class Laporan_pembayaranController implements Initializable {
     @FXML
     public void Cetak(ActionEvent event) throws JRException, SQLException {
         // Connection conn = DBConnect.ConnDB();
-        String kueri = "SELECT * FROM pembayaran WHERE bulan = '"+ cmbx_bulan.getValue() +"' ";
+        //memanggil fungsi showGreetings supaya bisa mencetak jasper yang sesuai dengan user login
+        try {
+            showGreetings();
+        } catch (SQLException ex) {
+            Logger.getLogger(History_pembayaranController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String kueri = "SELECT * FROM pembayaran WHERE bulan = '"+ cmbx_bulan.getValue() +"' AND nama_pembayar = '"+ lbl_user.getText() +"' ";
         Statement st = null;
         ResultSet rs = null;
         try {
             st = conn.createStatement();
             rs = st.executeQuery(kueri);
             
-            String reports = ("D:\\My Documents\\Test RPL\\Main\\src\\main\\java\\com\\mycompany\\main\\Laporan_Pembayaran.jrxml");
+            String reports = ("D:\\My Documents\\Test RPL\\Main\\src\\main\\java\\com\\mycompany\\main\\History_Pembayaran.jrxml");
             HashMap hashs = new HashMap();
-            hashs.put("Kodes", cmbx_bulan.getValue());
+            hashs.put("Kode", cmbx_bulan.getValue());
+            hashs.put("Codex", lbl_user.getText());
             JasperReport JRpts = JasperCompileManager.compileReport(reports);
             JasperPrint JPrints = JasperFillManager.fillReport(JRpts, hashs, conn);
             JasperViewer.viewReport(JPrints, false);
@@ -156,18 +198,21 @@ public class Laporan_pembayaranController implements Initializable {
     public void logout() throws IOException {
         try {
             // Connection conn = DBConnect.CLoseDB();
-            App.setRoot("admin_login");
+            App.setRoot("user_login");
         }
         catch(IOException e) {
         }
     }
     
-    public void home() throws IOException {
-        App.setRoot("admin_dashboard");
+    // Fungsi untuk button home
+    @FXML
+    public void Home() throws IOException {
+        App.setRoot("user_dashboard");
     }
     
-    public void kelola_user() throws IOException {
-        App.setRoot("kelola_user");
+    @FXML
+    public void bayarSPP() throws IOException {
+        App.setRoot("bayar_spp");
     }
 
 }

@@ -6,9 +6,15 @@
 	<parameter name="Kode" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$P{Kode}]]></defaultValueExpression>
 	</parameter>
+	<parameter name="Codex" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT * FROM pembayaran WHERE nis = $P{Kode} ORDER BY id_pembayaran DESC limit 1]]>
+		<![CDATA[SELECT * FROM pembayaran WHERE bulan = $P{Kode} AND nama_pembayar = $P{Codex}]]>
 	</queryString>
+	<field name="id_pembayaran" class="java.lang.Object">
+		<property name="com.jaspersoft.studio.field.name" value="id_pembayaran"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_pembayaran"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pembayaran"/>
+	</field>
 	<field name="nis" class="java.lang.Object">
 		<property name="com.jaspersoft.studio.field.name" value="nis"/>
 		<property name="com.jaspersoft.studio.field.label" value="nis"/>

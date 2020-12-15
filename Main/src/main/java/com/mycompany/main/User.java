@@ -80,43 +80,4 @@ public class User {
         return alamat;
     }
     
-       
-//    public User(int id, String nama_user, String nama_anak_user, String alamat, String username, String password, String no_telp) {
-//        this.id = id;
-//        this.nama_user = nama_user;
-//        this.nama_anak_user = nama_anak_user;
-//        this.alamat = alamat;
-//        this.username = username;
-//        this.password = password;
-//        this.no_telp = no_telp;
-//    }
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public String getNama_user() {
-//        return nama_user;
-//    }
-//
-//    public String getNama_anak_user() {
-//        return nama_anak_user;
-//    }
-//
-//    public String getAlamat() {
-//        return alamat;
-//    }
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//    
-//    public String getNo_telp() {
-//        return no_telp;
-//    }
-    
 }

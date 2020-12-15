@@ -16,13 +16,20 @@ import javafx.stage.Stage;
 
 public class AdminLoginController {
     
-    @FXML private Pane panel_login;
-    @FXML private TextField txt_username; 
-    @FXML private Button btn_login;
-    @FXML private Button btn_kembali;
-    @FXML private PasswordField txt_password;
+    @FXML
+    private Pane panel_login;
     
-    Connection conn = DBConnect.ConnDB();
+    @FXML
+    private TextField txt_username;
+    
+    @FXML
+    private Button btn_login;
+
+    @FXML
+    private Button btn_kembali;
+
+    @FXML
+    private PasswordField txt_password;
     
     @FXML
     private void switchToPrimary() throws IOException {
@@ -31,7 +38,8 @@ public class AdminLoginController {
     
     
     public void login() throws SQLException, IOException{
-//        Connection conn = DBConnect.ConnDB();
+        Connection conn = DBConnect.ConnDB();
+   
         try {
             String Username = txt_username.getText();
             String Password = txt_password.getText();
@@ -39,7 +47,7 @@ public class AdminLoginController {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from admin where username = '"+Username+"' and password = '"+Password+"' ");
             
-            Alert message = new Alert(Alert.AlertType.INFORMATION);
+            Alert message = new Alert(Alert.AlertType.WARNING);
             if(resultSet.next()) {
                 App.setRoot("admin_dashboard");
                 
@@ -62,6 +70,7 @@ public class AdminLoginController {
                 message.show(); 
             }
         }
+        
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }

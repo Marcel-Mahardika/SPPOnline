@@ -1,13 +1,2 @@
-com\mycompany\main\User.class
-com\mycompany\main\Bayar_sppController.class
 module-info.class
-com\mycompany\main\Bayar.class
-com\mycompany\main\PrimaryController.class
-com\mycompany\main\Kelola_userController.class
-com\mycompany\main\Laporan_pembayaranController.class
-com\mycompany\main\AppController.class
-com\mycompany\main\AdminLoginController.class
 com\mycompany\main\App.class
-helper\DBConnect.class
-com\mycompany\main\UserLoginController.class
-com\mycompany\main\App_adminsController.class

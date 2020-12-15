@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.mycompany.main;
 
 import com.mycompany.main.Bayar;
@@ -35,6 +36,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -62,8 +65,9 @@ public class Bayar_sppController implements Initializable {
     
     @FXML private Button btn_logout;
     @FXML private Button btn_bayar;
-    @FXML private Button btn_cetak;
     @FXML private Button btn_home;
+    @FXML private Button btn_cetak;
+    @FXML private Button btn_history;
     
     @FXML private TextField txt_id;
     @FXML private TextField txt_pembayar;
@@ -78,6 +82,7 @@ public class Bayar_sppController implements Initializable {
     @FXML private ComboBox<String> cmbx_bank;
     @FXML private TextField txt_rekening;
     @FXML private Label txt_id_pembayaran;
+    @FXML private Label lbl_user;
     
     //bagian tabel bayar (tersembunyi)
     @FXML private TableView<Bayar> tb_bayar;
@@ -103,7 +108,6 @@ public class Bayar_sppController implements Initializable {
     @FXML private TableColumn<User, String> col_jenkel;
     @FXML private TableColumn<User, String> col_ortu;
       
-    
     //List ComboBox untuk menampilkan list bulan
     ObservableList<String> list_bulan = FXCollections.observableArrayList("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
     
@@ -112,6 +116,7 @@ public class Bayar_sppController implements Initializable {
     
     //Untuk menghubungkan fungsi dengan DB
     Connection conn = DBConnect.ConnDB();
+    
     
     /**
      * Initializes the controller class.
@@ -126,9 +131,20 @@ public class Bayar_sppController implements Initializable {
         cmbx_bulan.setItems(list_bulan); 
         cmbx_bank.setItems(list_bank);
         
-        showBayar();
+        //untuk menyembunyikan button cetak
+        btn_cetak.setDisable(true);
+        
         try {
             showSiswa();
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(Bayar_sppController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        showBayar();
+        
+        try {
+            showGreetings();
         } catch (SQLException ex) {
             Logger.getLogger(Bayar_sppController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -139,7 +155,7 @@ public class Bayar_sppController implements Initializable {
     //menampilkan list siswa
      ObservableList<User> userList = FXCollections.observableArrayList();  
      public ObservableList<User> getUserList() {
-//        Connection conn = DBConnect.ConnDB();
+        // Connection conn = DBConnect.ConnDB();
         String query = "SELECT * FROM user";
         Statement st;
         ResultSet rs;
@@ -157,11 +173,11 @@ public class Bayar_sppController implements Initializable {
         }
         return userList;    
     }
-     
+       
     
-    //Fungsi untuk menampilkan siswa berdaarkan username yang diinputkan saat login
+    //Fungsi untuk menampilkan siswa berdasarkan username yang diinputkan saat login
     public void showSiswa() throws SQLException {
-//        Connection conn = DBConnect.ConnDB();
+        // Connection conn = DBConnect.ConnDB();
         UserLoginController sh = new UserLoginController();
         String ambilUser = sh.Username;
         String query = "SELECT * FROM user WHERE username = '"+ ambilUser +"'";
@@ -180,39 +196,36 @@ public class Bayar_sppController implements Initializable {
             e.getMessage();
         }
         
-        //mengatur bagian ttanggal supaya mengikuti tanggal yang ada di sistem pengguna
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        // mengatur bagian ttanggal supaya mengikuti tanggal yang ada di sistem pengguna
+        // source format : https://docs.oracle.com/javase/10/docs/api/index.html?java/text/SimpleDateFormat.html
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
         LocalDateTime now = LocalDateTime.now();
         lbl_tanggal.setText(dtf.format(now));
     }
     
-    public void click_action(MouseEvent event) throws SQLException {
-        User user = tb_siswa.getSelectionModel().getSelectedItem(); 
-        
-        //cetak di textfield
-        //yang berisi tanda "" karena nilainya adalah integer
-        txt_id.setText("" + user.getId());
-        txt_nis.setText("" + user.getNis());
-        txt_siswa.setText(user.getNama_siswa());
-        txt_kelas.setText(user.getKelas());
-        txt_pembayar.setText(user.getNama_user());
-        lbl_tagihan.setText("300000");   //karena biaya SPP per bulannya Rp. 300000
-        txt_nominal.setText("");
-        txt_rekening.setText("");
-        txt_search.setText("");
-        
-        //mengatur bagian ttanggal supaya mengikuti tanggal yang ada di sistem pengguna
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDateTime now = LocalDateTime.now();
-        lbl_tanggal.setText(dtf.format(now));
-           
+    
+    //Fungsi untuk menampilkan nama pengguna di bagian pojok kanan atas aplikasi
+    public void showGreetings() throws SQLException {
+        UserLoginController sh = new UserLoginController();
+        String ambilUser = sh.Username;
+        String query = "SELECT nama_user FROM user WHERE username = '"+ ambilUser +"'";
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(query); 
+        try {
+            while(rs.next()) {
+                lbl_user.setText(rs.getString("nama_user"));
+            }
+        }
+        catch(SQLException e) {
+            e.getMessage();
+        }
     }
     
     
     //menampilkan list pembayaran (tersembunyi)
     public ObservableList<Bayar> getBayarList() {
     ObservableList<Bayar> bayarList = FXCollections.observableArrayList();
-//        Connection conn = DBConnect.ConnDB();
+        // Connection conn = DBConnect.ConnDB();
         String query = "SELECT * FROM pembayaran";
         Statement st;
         ResultSet rs;
@@ -230,6 +243,7 @@ public class Bayar_sppController implements Initializable {
         }
         return bayarList;
     }
+    
     
     //menampilkan pembayaran (tersembunyi)
     public void showBayar() {
@@ -250,6 +264,7 @@ public class Bayar_sppController implements Initializable {
         tb_bayar.setItems(list);
     }  
      
+    
     //Supaya fungsi bayar bisa berfungsi  
     private void executeQuery(String query) {
         Statement st;
@@ -262,49 +277,110 @@ public class Bayar_sppController implements Initializable {
         }
     }
     
+    
     //Fungsi untuk insert pembayaran baru ke database
     private void bayar() throws IOException {
-
-        //Bagian Error Handling jika ada textfield yang kosong
+        boolean cekBulan = cmbx_bulan.getSelectionModel().isEmpty();
+        boolean cekBank = cmbx_bank.getSelectionModel().isEmpty();
+        //Bagian Error Handling
         Alert message = new Alert(AlertType.WARNING);
-        if(txt_nis.getText().isEmpty() || txt_siswa.getText().isEmpty() || txt_kelas.getText().isEmpty() || txt_nominal.getText().isEmpty()  || txt_rekening.getText().isEmpty() || txt_pembayar.getText().isEmpty()) {
-            message.setContentText("Maaf, Isian Tidak Boleh Ada yang Kosong!");
+        if(txt_nominal.getText().isEmpty() && txt_rekening.getText().isEmpty() && cekBulan == true && cekBank == true) {
+            message.setContentText("Maaf, Form pembayaran tidak boleh ada yang kosong!");
+            message.setHeaderText("Kesalahan Input!");
             message.setTitle("Error!");
             message.show(); 
         }
+        else if(txt_nominal.getText().isEmpty()) {
+            message.setContentText("Maaf, Nominal tidak boleh kosong!");
+            message.setHeaderText("Kesalahan Input!");
+            message.setTitle("Error!");
+            message.show(); 
+        }
+        else if(txt_rekening.getText().isEmpty()) {
+            message.setContentText("Maaf, Nomor Rekening tidak boleh kosong!");
+            message.setHeaderText("Kesalahan Input!");
+            message.setTitle("Error!");
+            message.show(); 
+        }
+        else if(cekBulan == true) {
+            message.setContentText("Maaf, Bulan tidak boleh kosong!");
+            message.setHeaderText("Kesalahan Input!");
+            message.setTitle("Error!");
+            message.show();
+        }
+        else if(cekBank == true) {
+            message.setContentText("Maaf, Bank tidak boleh kosong!");
+            message.setHeaderText("Kesalahan Input!");
+            message.setTitle("Error!");
+            message.show();
+        }
         else if(!lbl_tagihan.getText().equals(txt_nominal.getText())) {
-            message.setContentText("Maaf, Jumlah Nominal Harus Sama Dengan Jumlah Tagihan!");
+            message.setContentText("Maaf, jumlah nominal harus sama dengan jumlah tagihan!");
+            message.setHeaderText("Kesalahan Input!");
             message.setTitle("Error!");
             message.show(); 
         }
         else {
             Alert message2 = new Alert(AlertType.CONFIRMATION);
-            message2.setContentText("Apakah Anda Sudah Yakin Dengan Data Pembayaran Anda?");
-            message2.setTitle("Confirmation!");
+            message2.setTitle("Confirmation");
+            message2.setContentText("Apakah Anda sudah yakin dengan pembayaran Anda?");
+            message2.setHeaderText("Konfirmasi Pembayaran");
+            
+            ButtonType typeOK = new ButtonType("Sudah");
+            ButtonType typeCancel = new ButtonType("Belum");
+            message2.getButtonTypes().setAll(typeOK, typeCancel);
+            
             Optional<ButtonType> result = message2.showAndWait();
-            if(result.get() == ButtonType.OK) {
-            try {
-            String query = "INSERT INTO pembayaran (nis,nama_anak,kelas,tanggal_bayar,tagihan,bulan,nominal,bank,no_rekening,"
+            if(result.get() == typeOK) {
+                try {
+                String query = "INSERT INTO pembayaran (nis,nama_anak,kelas,tanggal_bayar,tagihan,bulan,nominal,bank,no_rekening,"
                     + "nama_pembayar) VALUES (" + txt_nis.getText() + ",'" + txt_siswa.getText() +"','" + txt_kelas.getText()
                     + "','" + lbl_tanggal.getText() + "'," + lbl_tagihan.getText() + ",'" + cmbx_bulan.getValue()
                     + "'," + txt_nominal.getText() + ",'" + cmbx_bank.getValue() + "'," + txt_rekening.getText()
                     + ",'" + txt_pembayar.getText() + "')";
-            executeQuery(query);  
-            showBayar();
-            }
-            catch(Exception e) {
-                
-            }
+                executeQuery(query);  
+                showBayar();
+                }
+                catch(Exception e) {
+                    //kosong
+                }
+                //menampilkan kembali button cetak
+                btn_cetak.setDisable(false);
             }
             else {
-                showBayar();
+                // alert akan tertutup jika pengguna menekan button "belum"
             }
         }
-        
     }
     
     
-     //untuk button bayarnya supaya bekerja
+    // Fungsi untuk mencetak bukti dengan Jasper Report
+    public void CetakBukti() throws SQLException, JRException {
+        String cetak = "SELECT * FROM pembayaran WHERE nis = '"+ txt_nis.getText() +"' ORDER BY id_pembayaran desc limit 1";   //mengambil data secara descending
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(cetak);
+            String report = ("D:\\My Documents\\Test RPL\\Main\\src\\main\\java\\com\\mycompany\\main\\Bukti_Pembayaran.jrxml");
+            HashMap hash = new HashMap();
+            hash.put("Kode", txt_nis.getText());
+            JasperReport JRpt = JasperCompileManager.compileReport(report);
+            JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, conn);
+            JasperViewer.viewReport(JPrint, false);
+        }                           
+        catch(SQLException e) {
+            e.getMessage();
+        }
+        //supaya tidak terjadi Database Lock
+        finally {
+            st.close();
+            rs.close();
+        }
+    }
+    
+    
+    //untuk button bayarnya supaya bekerja
     //dengan library ActionEvent
     //kalau tanpa ActionEvent nanti buttonnya tidak berfungsi
     public void button_action(ActionEvent event) throws IOException {
@@ -313,11 +389,12 @@ public class Bayar_sppController implements Initializable {
         }
     }
     
+    
     //Fungsi untuk button logout
     @FXML
     public void logout() throws IOException {
         try {
-//            Connection conn = DBConnect.CLoseDB();
+            // Connection conn = DBConnect.CLoseDB();
             App.setRoot("user_login");
         }
         catch(Exception e) {
@@ -325,49 +402,15 @@ public class Bayar_sppController implements Initializable {
         }
     }
     
-  
-    //Fungsi untuk mencetak bukti pembayaran
+    // Fungsi untuk menu button homme
     @FXML
-    public void Cetak(ActionEvent event) throws JRException {
-//        Connection conn = DBConnect.ConnDB();
-        String queryNis = "SELECT * FROM pembayaran WHERE nis = '"+ txt_nis.getText() +"' ORDER BY id_pembayaran desc";   //mengambil data secara descending
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(queryNis);
-            Alert message = new Alert(AlertType.WARNING);
-            if(txt_nis.getText().isEmpty() || txt_siswa.getText().isEmpty() || txt_kelas.getText().isEmpty() || txt_nominal.getText().isEmpty()  || txt_rekening.getText().isEmpty() || txt_pembayar.getText().isEmpty()) {
-                message.setContentText("Maaf, Belum Bisa Cetak Bukti. Silakan Lakukan Pembayaran Terlebih Dahulu!");
-                message.setTitle("Error!");
-                message.show(); 
-            }
-            else if(rs.next() == false) {
-                message.setContentText("Maaf, Belum Bisa Cetak Bukti. Silakan Lakukan Pembayaran Terlebih Dahulu!");
-                message.setTitle("Error!");
-                message.show(); 
-            }
-            else {
-                try {
-                    String report = ("D:\\My Documents\\RPL Fixed\\SPPOnline\\Main\\src\\main\\java\\com\\mycompany\\main\\Bukti_Pembayaran.jrxml");
-                    HashMap hash = new HashMap();
-                    hash.put("Kode", txt_nis.getText());
-                    JasperReport JRpt = JasperCompileManager.compileReport(report);
-                    JasperPrint JPrint = JasperFillManager.fillReport(JRpt, hash, conn);
-                    JasperViewer.viewReport(JPrint, false);
-                }
-                catch(Exception e) {
-                    //kosong
-                } 
-            }
-        }
-        catch(SQLException e) {
-            e.getMessage();
-        }
-    }
-    
-    
-    //Fungsi untuk pindah ke halaman home
     public void Home() throws IOException {
         App.setRoot("user_dashboard");
     }
-
-} 
+    
+    // Fungsi untuk menu button history pembayaran
+    @FXML
+    public void History() throws IOException {
+        App.setRoot("history_pembayaran");
+    }
+}

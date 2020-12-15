@@ -25,8 +25,16 @@ import javafx.stage.Stage;
  * @author IMahardika
  */
 public class AppController implements Initializable {
-    @FXML private Button btn_logout;
-    @FXML private Button btn_bayarSPP;
+
+
+    @FXML
+    private Button btn_logout;
+    
+    @FXML
+    private Button btn_bayarSPP;
+    
+    @FXML
+    private Button btn_history;
     
     /**
      * Initializes the controller class.
@@ -53,6 +61,10 @@ public class AppController implements Initializable {
     
     public void bayarSPP() throws IOException {
         App.setRoot("bayar_spp");
+    }
+    
+    public void History() throws IOException {
+        App.setRoot("history_pembayaran");
     }
     
 }

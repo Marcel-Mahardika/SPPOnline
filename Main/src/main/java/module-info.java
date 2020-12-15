@@ -9,5 +9,4 @@ module com.mycompany.main {
 
     opens com.mycompany.main to javafx.fxml;
     exports com.mycompany.main;
-    
 }

@@ -6,70 +6,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.Laporan_pembayaranController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="1115.0" style="-fx-background-color: #f8f8f8;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.Laporan_pembayaranController">
    <children>
-      <Pane prefHeight="72.0" prefWidth="1116.0" style="-fx-background-color: #53c4f5;">
-         <children>
-            <Button fx:id="btn_logout" layoutX="1006.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Label layoutX="502.0" layoutY="19.0" text="SPP-Online" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Button fx:id="btn_logout" layoutX="1006.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #3e91b5;" text="Logout" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Label layoutX="502.0" layoutY="19.0" text="SPP-Online" textFill="WHITE">
+      <Pane layoutX="272.0" layoutY="125.0" prefHeight="446.0" prefWidth="810.0" style="-fx-background-color: #FFF; -fx-background-radius: 3;" />
+      <Label layoutX="271.0" layoutY="76.0" text="Laporan Pembayaran" textFill="#686f82">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Pane layoutY="72.0" prefHeight="328.0" prefWidth="242.0">
-         <children>
-            <Button fx:id="menu_kelola_user" layoutX="36.0" layoutY="28.0" mnemonicParsing="false" onAction="#kelola_user" style="-fx-background-color: transparent;" text="1. Kelola Akun User">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="menu_laporan" layoutX="36.0" layoutY="72.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="2. Laporan Pembayaran">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Button>
-            <Line endX="-100.0" endY="272.0" layoutX="344.0" layoutY="232.0" opacity="0.5" startX="-100.0" startY="-212.27928161621094" />
-         </children>
-      </Pane>
-      <Label layoutX="291.0" layoutY="96.0" text="Laporan Pembayaran">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tb_bayar" layoutX="284.0" layoutY="242.0" prefHeight="304.0" prefWidth="782.0">
+      <TableView fx:id="tb_bayar" layoutX="300.0" layoutY="227.0" prefHeight="304.0" prefWidth="754.0">
          <columns>
             <TableColumn fx:id="col_id_pembayaran" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="col_nis" prefWidth="83.0" text="NIS" />
@@ -84,8 +37,8 @@
             <TableColumn fx:id="col_nama_pembayar" prefWidth="250.0" text="Nama Pembayar" />
          </columns>
       </TableView>
-      <ComboBox fx:id="cmbx_bulan" layoutX="284.0" layoutY="174.0" prefHeight="30.0" prefWidth="282.0" promptText="Pilih Bulan Pembayaran" style="-fx-background-color: #FFF; -fx-border-color: #bababa; -fx-border-radius: 5;" />
-      <Button fx:id="btn_cetak" layoutX="602.0" layoutY="174.0" mnemonicParsing="false" onAction="#Cetak" prefHeight="30.0" prefWidth="147.0" style="-fx-background-color: #3e91b5;" text="Cetak" textFill="WHITE">
+      <ComboBox fx:id="cmbx_bulan" layoutX="301.0" layoutY="167.0" prefHeight="30.0" prefWidth="282.0" promptText="Pilih Bulan Pembayaran" style="-fx-background-color: #FFF; -fx-border-color: #bababa;" />
+      <Button fx:id="btn_cetak" layoutX="610.0" layoutY="167.0" mnemonicParsing="false" onAction="#Cetak" prefHeight="30.0" prefWidth="147.0" style="-fx-background-color: #3e91b5;" text="Cetak" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -93,5 +46,74 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Pane prefHeight="625.0" prefWidth="245.0" style="-fx-background-color: #53c4f5;">
+         <children>
+            <Button fx:id="menu_kelola_user" alignment="TOP_LEFT" layoutX="24.0" layoutY="230.0" mnemonicParsing="false" onAction="#kelola_user" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="        Kelola Akun User" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="24.0" layoutY="277.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: #f8f8f8;" text="        Laporan Pembayaran" textFill="#53c4f5">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Line endX="100.0" layoutX="123.0" layoutY="150.0" opacity="0.6" startX="-100.0" stroke="WHITE" />
+            <ImageView fitHeight="82.0" fitWidth="93.0" layoutX="12.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@RPL-LOGO.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_logout1" alignment="TOP_LEFT" layoutY="587.0" mnemonicParsing="false" onAction="#logout" prefHeight="37.0" prefWidth="245.0" style="-fx-background-color: #3e91b5; -fx-background-radius: 0;" text="                Logout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="39.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@keluar.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3e91b5" height="7.0" layoutY="582.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="245.0" />
+            <Label layoutX="92.0" layoutY="59.0" text="SPP-Online" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_home" alignment="TOP_LEFT" layoutX="24.0" layoutY="185.0" mnemonicParsing="false" onAction="#home" prefHeight="37.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="        Home" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="37.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home%20putih.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="32.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user%20putih.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="25.0" layoutX="39.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@laporan%20biru.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="245.0" prefHeight="55.0" prefWidth="870.0" style="-fx-background-color: #FFF;" />
    </children>
 </AnchorPane>

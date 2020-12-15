@@ -17,6 +17,8 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,6 +39,9 @@ public class Kelola_userController implements Initializable {
 
     @FXML private Button btn_logout;
     @FXML private Button btn_kembali;
+    @FXML private Button btn_home;
+    
+    @FXML private TextField txt_search;
     
     //Textfield untuk user / orang tua
     @FXML private TextField txt_id;
@@ -101,7 +106,7 @@ public class Kelola_userController implements Initializable {
     //Fungsi untuk mencari list user pada database
     public ObservableList<User> getUserList() {
         ObservableList<User> userList = FXCollections.observableArrayList();
-//        Connection conn = DBConnect.ConnDB();
+        // Connection conn = DBConnect.ConnDB();
         String query = "SELECT * FROM user";
         Statement st;
         ResultSet rs;
@@ -117,7 +122,8 @@ public class Kelola_userController implements Initializable {
         catch(SQLException e) {
             e.printStackTrace();
         }
-        return userList;    
+        return userList;   
+        
     }
     
     //Fungsi untuk menampilkan list user yang ada dalam database
@@ -138,11 +144,38 @@ public class Kelola_userController implements Initializable {
         col_alamat.setCellValueFactory(new PropertyValueFactory<User, String>("alamat"));
         
         tb_user.setItems(list);
+        
+        //Fungsi untuk mencari data user pada tabel user
+        FilteredList<User> filteredData = new FilteredList<>(list, s -> true);
+            txt_search.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(user -> {
+                    if(newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    
+                    if(user.getNama_user().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true;
+                    }
+                    else if(user.getNama_siswa().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                    
+                });
+            });
+            
+            SortedList<User> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(tb_user.comparatorProperty());
+            tb_user.setItems(sortedData);
     }
     
     //Fungsi supaya command query untuk CRUD bisa di execute
     private void executeQuery(String query) {
-//        Connection conn = DBConnect.ConnDB();
+        // Connection conn = DBConnect.ConnDB();
         Statement st;
         try {
             st = conn.createStatement();
@@ -212,13 +245,17 @@ public class Kelola_userController implements Initializable {
     }
     
     //Fungsi untuk logout
-    public void logout() throws IOException {
+    public void logout() throws IOException, SQLException {
         try {
-//            Connection conn = DBConnect.CLoseDB();
+            // Connection conn = DBConnect.CLoseDB();
             App.setRoot("admin_login");
         }
         catch(Exception e) {
         }
+    }
+    
+    public void home() throws IOException {
+        App.setRoot("admin_dashboard");
     }
     
     public void laporan() throws IOException {

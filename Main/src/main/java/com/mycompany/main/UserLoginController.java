@@ -28,18 +28,47 @@ public class UserLoginController {
     @FXML private Button btn_login;
     @FXML private Button btn_kembali;
     @FXML private PasswordField txt_password;  
-    
-    //Untuk menghubungkan fungsi dengan DB
-//    Connection conn = DBConnect.ConnDB();
 
     @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
     
+//    public void login() throws IOException {
+//        String Username = txt_username.getText();
+//        String Password = txt_password.getText();
+//        
+//        Alert message = new Alert(AlertType.INFORMATION);
+//        if(Username.equals("nurhadi") && Password.equals("nurhadi123")) {
+////            message.setContentText("Selamat Datang " + Username);
+////            message.setTitle("Selamat Datang");
+////            message.show();
+//            
+//            //untuk menyembunyikan login interface
+//            btn_login.getScene().getWindow().hide();
+//            
+//            //untuk menampilkan main app interface
+//            AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("app.fxml"));
+//            Scene scene = new Scene(root);
+//            Stage stage = new Stage();
+//            stage.setScene(scene);
+//            stage.setTitle("Selamat Datang");
+//            stage.show();
+//            
+//        }
+//        else {
+//            message.setContentText("Invalid Login");
+//            message.setTitle("Login Gagal");
+//            message.show();   
+//        }
+        
+//        txt_password.setText("");
+//        txt_username.setText("");
+        
+    
     static String Username;
     private static String Password;
-            
+    
     public void login() throws SQLException, IOException {
         Connection conn = DBConnect.ConnDB();
         try {
