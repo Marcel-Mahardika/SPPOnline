@@ -280,6 +280,10 @@ public class Bayar_sppController implements Initializable {
     
     //Fungsi untuk insert pembayaran baru ke database
     private void bayar() throws IOException {
+        
+        UserLoginController sh = new UserLoginController();
+        String ambilUser = sh.Username;
+        
         boolean cekBulan = cmbx_bulan.getSelectionModel().isEmpty();
         boolean cekBank = cmbx_bank.getSelectionModel().isEmpty();
         //Bagian Error Handling
@@ -334,10 +338,10 @@ public class Bayar_sppController implements Initializable {
             if(result.get() == typeOK) {
                 try {
                 String query = "INSERT INTO pembayaran (nis,nama_anak,kelas,tanggal_bayar,tagihan,bulan,nominal,bank,no_rekening,"
-                    + "nama_pembayar) VALUES (" + txt_nis.getText() + ",'" + txt_siswa.getText() +"','" + txt_kelas.getText()
+                    + "nama_pembayar,id_user) VALUES (" + txt_nis.getText() + ",'" + txt_siswa.getText() +"','" + txt_kelas.getText()
                     + "','" + lbl_tanggal.getText() + "'," + lbl_tagihan.getText() + ",'" + cmbx_bulan.getValue()
                     + "'," + txt_nominal.getText() + ",'" + cmbx_bank.getValue() + "'," + txt_rekening.getText()
-                    + ",'" + txt_pembayar.getText() + "')";
+                    + ",'" + txt_pembayar.getText() + "', (SELECT user.id FROM user WHERE user.username = '"+ ambilUser + "') ) ";
                 executeQuery(query);  
                 showBayar();
                 }
