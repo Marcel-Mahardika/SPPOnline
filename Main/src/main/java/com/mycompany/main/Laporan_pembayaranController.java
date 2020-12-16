@@ -81,7 +81,7 @@ public class Laporan_pembayaranController implements Initializable {
     }  
     
     
-    //menampilkan list pembayaran (tersembunyi)
+    //menampilkan list pembayaran 
     public ObservableList<Bayar> getBayarList() {
     ObservableList<Bayar> bayarList = FXCollections.observableArrayList();
         // Connection conn = DBConnect.ConnDB();
@@ -104,11 +104,11 @@ public class Laporan_pembayaranController implements Initializable {
     }
     
     
-    //menampilkan pembayaran (tersembunyi)
+    //menampilkan pembayaran 
     public void showBayar() {
         ObservableList<Bayar> list = getBayarList();
         
-        col_id_pembayaran.setCellValueFactory(new PropertyValueFactory<Bayar, Integer>("id_pembayaran"));
+        // col_id_pembayaran.setCellValueFactory(new PropertyValueFactory<Bayar, Integer>("id_pembayaran"));
         col_nis.setCellValueFactory(new PropertyValueFactory<Bayar, Integer>("nis"));
         col_siswa.setCellValueFactory(new PropertyValueFactory<Bayar, String>("nama_anak"));
         col_kelas.setCellValueFactory(new PropertyValueFactory<Bayar, String>("kelas"));

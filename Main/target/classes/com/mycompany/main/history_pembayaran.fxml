@@ -111,7 +111,6 @@
       </Label>
       <TableView fx:id="tb_bayar" layoutX="300.0" layoutY="227.0" prefHeight="304.0" prefWidth="754.0">
          <columns>
-            <TableColumn fx:id="col_id_pembayaran" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="col_nis" prefWidth="83.0" text="NIS" />
             <TableColumn fx:id="col_siswa" prefWidth="132.0" text="Nama Siswa" />
             <TableColumn fx:id="col_kelas" prefWidth="54.0" text="Kelas" />
