@@ -366,7 +366,7 @@ public class Bayar_sppController implements Initializable {
         try {
             st = conn.createStatement();
             rs = st.executeQuery(cetak);
-            String report = ("D:\\My Documents\\Test RPL\\Main\\src\\main\\java\\com\\mycompany\\main\\Bukti_Pembayaran.jrxml");
+            String report = ("D:\\My Documents\\RPL Fixed\\SPPOnline\\Main\\src\\main\\java\\com\\mycompany\\main\\Bukti_Pembayaran.jrxml");
             HashMap hash = new HashMap();
             hash.put("Kode", txt_nis.getText());
             JasperReport JRpt = JasperCompileManager.compileReport(report);

@@ -175,7 +175,7 @@ public class History_pembayaranController implements Initializable {
             st = conn.createStatement();
             rs = st.executeQuery(kueri);
             
-            String reports = ("D:\\My Documents\\Test RPL\\Main\\src\\main\\java\\com\\mycompany\\main\\History_Pembayaran.jrxml");
+            String reports = ("D:\\My Documents\\RPL Fixed\\SPPOnline\\Main\\src\\main\\java\\com\\mycompany\\main\\History_Pembayaran.jrxml");
             HashMap hashs = new HashMap();
             hashs.put("Kode", cmbx_bulan.getValue());
             hashs.put("Codex", lbl_user.getText());

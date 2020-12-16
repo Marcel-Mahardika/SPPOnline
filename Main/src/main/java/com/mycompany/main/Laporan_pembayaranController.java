@@ -134,7 +134,7 @@ public class Laporan_pembayaranController implements Initializable {
             st = conn.createStatement();
             rs = st.executeQuery(kueri);
             
-            String reports = ("D:\\My Documents\\Test RPL\\Main\\src\\main\\java\\com\\mycompany\\main\\Laporan_Pembayaran.jrxml");
+            String reports = ("D:\\My Documents\\RPL Fixed\\SPPOnline\\Main\\src\\main\\java\\com\\mycompany\\main\\Laporan_Pembayaran.jrxml");
             HashMap hashs = new HashMap();
             hashs.put("Kodes", cmbx_bulan.getValue());
             JasperReport JRpts = JasperCompileManager.compileReport(reports);

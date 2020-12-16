@@ -65,16 +65,16 @@
                   </Button>
                   <VBox layoutX="130.0" layoutY="262.0" prefHeight="115.0" prefWidth="420.0" spacing="20.0">
                      <children>
-                        <PasswordField fx:id="txt_password" prefHeight="46.0" prefWidth="420.0" promptText="Masukkan Password" style="-fx-background-radius: 5;">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </PasswordField>
                         <TextField fx:id="txt_username" prefHeight="46.0" prefWidth="420.0" promptText="Masukkan Username" style="-fx-background-radius: 5;">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
+                        <PasswordField fx:id="txt_password" prefHeight="46.0" prefWidth="420.0" promptText="Masukkan Password" style="-fx-background-radius: 5;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </PasswordField>
                      </children>
                   </VBox>
                </children>

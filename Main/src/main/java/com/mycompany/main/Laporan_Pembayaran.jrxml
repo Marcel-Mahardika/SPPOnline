@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Laporan_Pembayaran" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5fdc2aa8-47cb-45a5-b611-5b23212e34f6">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Laporan_Pembayaran" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5fdc2aa8-47cb-45a5-b611-5b23212e34f6">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="src\main\java\com\mycompany\main\DataAdapter.xml"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="Kodes" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT * FROM pembayaran WHERE bulan = $P{Kodes}]]>
@@ -66,43 +75,49 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="106" splitType="Stretch">
 			<staticText>
-				<reportElement x="127" y="16" width="300" height="46" uuid="a4536be9-16e9-4e9c-a62a-9a1188efa8f1"/>
+				<reportElement x="245" y="10" width="300" height="46" uuid="a4536be9-16e9-4e9c-a62a-9a1188efa8f1"/>
 				<textElement textAlignment="Center">
 					<font size="24"/>
 				</textElement>
 				<text><![CDATA[Laporan Pembayaran SPP]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="74" width="802" height="1" uuid="d7050dce-94b8-4d8d-bb17-4e027ba1886c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="3.0"/>
+				</graphicElement>
+			</line>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
 	<columnHeader>
-		<band height="65" splitType="Stretch">
+		<band height="110" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="30" width="80" height="30" uuid="76f98169-bccc-42fc-91f3-52c2c9aa203f"/>
+				<reportElement x="0" y="73" width="105" height="37" uuid="76f98169-bccc-42fc-91f3-52c2c9aa203f"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[NIS]]></text>
+				<text><![CDATA[   NIS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="80" y="30" width="110" height="30" uuid="9eba00b7-805d-4fe1-8057-7796c7433293"/>
+				<reportElement x="105" y="73" width="137" height="37" uuid="9eba00b7-805d-4fe1-8057-7796c7433293"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[Nama]]></text>
+				<text><![CDATA[   Nama]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="190" y="30" width="60" height="30" uuid="0382d5d3-83ed-4bc9-ad04-53c8ca3344e4"/>
+				<reportElement x="242" y="73" width="60" height="37" uuid="0382d5d3-83ed-4bc9-ad04-53c8ca3344e4"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
@@ -112,88 +127,208 @@
 				<text><![CDATA[Kelas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="30" width="130" height="30" uuid="65dc9db3-a151-4c6a-b8e9-c68a3965bc01"/>
+				<reportElement x="302" y="73" width="151" height="37" uuid="65dc9db3-a151-4c6a-b8e9-c68a3965bc01"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[Tanggal]]></text>
+				<text><![CDATA[   Tanggal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="380" y="30" width="85" height="30" uuid="7484e2a4-72ce-4bce-ac26-4c353155235d"/>
+				<reportElement x="453" y="73" width="109" height="37" uuid="7484e2a4-72ce-4bce-ac26-4c353155235d"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[Tagihan]]></text>
+				<text><![CDATA[   Tagihan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="465" y="30" width="87" height="30" uuid="d878da7e-8460-41c7-8174-4874f32d38ee"/>
+				<reportElement x="562" y="73" width="109" height="37" uuid="d878da7e-8460-41c7-8174-4874f32d38ee">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[Nominal]]></text>
+				<text><![CDATA[   Dibayar]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="671" y="73" width="131" height="37" uuid="e13d9f6a-3646-47af-9a18-dd2839b1a056">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[   Pembayar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="5" width="450" height="28" uuid="9a278ccf-a47c-4681-b8d1-5707a59cc6b6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Berikut merupakan siswa-siswa yang sudah membayar SPP pada bulan ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="33" width="210" height="28" uuid="97a66a90-e9b9-4dd6-998d-657e3680b56d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Dengan rincian sebagai berikut : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="451" y="5" width="100" height="30" uuid="eaca1096-457e-4249-8ba6-9188f1dabf2e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bulan}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="41" splitType="Stretch">
+		<band height="40" splitType="Stretch">
 			<textField>
-				<reportElement x="385" y="0" width="80" height="30" uuid="e45e49a8-8f8f-4dbc-91d7-51109dfaceec"/>
+				<reportElement x="465" y="9" width="80" height="21" uuid="e45e49a8-8f8f-4dbc-91d7-51109dfaceec">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tagihan}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="470" y="0" width="82" height="30" uuid="4420044e-6ce8-44be-add8-cefc976e6b1e"/>
+				<reportElement x="574" y="9" width="82" height="21" uuid="4420044e-6ce8-44be-add8-cefc976e6b1e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nominal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="210" y="0" width="40" height="30" uuid="dcd56cd3-d3b0-4147-a8e6-56b76b041f87"/>
+				<reportElement x="254" y="9" width="28" height="21" uuid="dcd56cd3-d3b0-4147-a8e6-56b76b041f87">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{kelas}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="260" y="0" width="118" height="30" uuid="eb372da4-1ef3-4823-b87a-01d0980e0183"/>
+				<reportElement x="313" y="9" width="137" height="21" uuid="eb372da4-1ef3-4823-b87a-01d0980e0183">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tanggal_bayar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="80" height="30" uuid="21bec60a-f489-4f67-b93f-2b8fe592dc3a"/>
+				<reportElement x="11" y="9" width="80" height="21" uuid="21bec60a-f489-4f67-b93f-2b8fe592dc3a"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nis}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="90" y="0" width="100" height="30" uuid="d1dd7186-8d1e-4e3e-95f7-880cd8b2bde3"/>
+				<reportElement x="116" y="9" width="105" height="21" uuid="d1dd7186-8d1e-4e3e-95f7-880cd8b2bde3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_anak}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="682" y="9" width="120" height="21" uuid="4158f919-100b-4bec-82c3-a40bd0ecba51">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f928cc6b-de04-45af-8e95-a7820d56ed2d"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_pembayar}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="0" width="105" height="40" forecolor="rgba(0, 0, 0, 0.0)" backcolor="rgba(255, 255, 255, 0.0)" uuid="1699206d-8390-48ba-a58d-5eeba928e1c2"/>
+				<graphicElement>
+					<pen lineColor="#000000"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="105" y="0" width="137" height="40" forecolor="rgba(0, 0, 0, 0.0)" backcolor="rgba(255, 255, 255, 0.0)" uuid="aa39ab48-a056-48e5-b99d-33c6d81d773a"/>
+				<graphicElement>
+					<pen lineColor="#000000"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="0" width="60" height="40" forecolor="rgba(0, 0, 0, 0.0)" backcolor="rgba(255, 255, 255, 0.0)" uuid="a64f0049-f023-4d19-8f91-eee644ab0ed9"/>
+				<graphicElement>
+					<pen lineColor="#000000"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="453" y="0" width="109" height="40" forecolor="rgba(0, 0, 0, 0.0)" backcolor="rgba(255, 255, 255, 0.0)" uuid="efd1c21e-2b75-4769-8656-8bec77d9e994"/>
+				<graphicElement>
+					<pen lineColor="#000000"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="562" y="0" width="109" height="40" forecolor="rgba(0, 0, 0, 0.0)" backcolor="rgba(255, 255, 255, 0.0)" uuid="0dcb97a1-2156-4326-88ce-ed2dded1ff47"/>
+				<graphicElement>
+					<pen lineColor="#000000"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="671" y="0" width="131" height="40" forecolor="rgba(0, 0, 0, 0.0)" backcolor="rgba(255, 255, 255, 0.0)" uuid="77e0f87c-9803-4b4a-ae65-d2c694db183c"/>
+				<graphicElement>
+					<pen lineColor="#000000"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="302" y="0" width="151" height="40" forecolor="rgba(0, 0, 0, 0.0)" backcolor="rgba(255, 255, 255, 0.0)" uuid="690dc1e4-24ce-4106-be20-57948f94f73b"/>
+				<graphicElement>
+					<pen lineColor="#000000"/>
+				</graphicElement>
+			</rectangle>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="740" height="40" uuid="9247b378-0165-4b31-b7a1-002f9def88da">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Dengan ini, siswa yang masuk kedalam list Laporan Pembayaran di atas di nyatakan LUNAS untuk bulan pembayaran yang disebutkan. Terima Kasih.]]></text>
+			</staticText>
+		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="48" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
