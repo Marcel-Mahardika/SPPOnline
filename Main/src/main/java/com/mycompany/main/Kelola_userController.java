@@ -22,6 +22,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -191,6 +192,7 @@ public class Kelola_userController implements Initializable {
         String query = "INSERT INTO user VALUES (" + txt_id.getText() + ",'" + txt_nama.getText() + "','" + txt_username.getText() + "','" + txt_password.getText() + "','" + txt_telepon.getText() + "'," + txt_nis.getText() + ",'" + txt_anak.getText() + "','" + txt_kelas.getText() + "'," + txt_usia.getText() + ",'" + cmbx_jenkel.getValue() + "','" + txt_alamat.getText() + "')"; 
         executeQuery(query);    
         showUser();
+        
     }
     
     //Fungsi untuk update user
