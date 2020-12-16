@@ -10,14 +10,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.AdminLoginController">
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.main.AdminLoginController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="1115.0">
+      <BorderPane prefHeight="625.0" prefWidth="1115.0">
          <left>
-            <Pane prefHeight="600.0" prefWidth="459.0" style="-fx-background-color: #53c4f5e8;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="615.0" prefWidth="459.0" style="-fx-background-color: #53c4f5e8;" BorderPane.alignment="CENTER">
                <children>
                   <Circle fill="WHITE" layoutX="238.0" layoutY="240.0" opacity="0.75" radius="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                   <ImageView fitHeight="154.0" fitWidth="189.0" layoutX="146.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
@@ -39,17 +40,13 @@
             </Pane>
          </left>
          <center>
-            <Pane fx:id="panel_login" prefHeight="600.0" prefWidth="654.0" BorderPane.alignment="CENTER">
+            <Pane fx:id="panel_login" prefHeight="637.0" prefWidth="656.0" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="266.0" layoutY="177.0" text="Admin Login">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_username" layoutX="131.0" layoutY="252.0" prefHeight="46.0" prefWidth="420.0" promptText="Masukkan Username" style="-fx-background-radius: 5;">
-                     <font>
-                        <Font size="14.0" />
-                     </font></TextField>
                   <Button fx:id="btn_login" layoutX="130.0" layoutY="394.0" mnemonicParsing="false" onAction="#login" prefHeight="46.0" prefWidth="420.0" style="-fx-background-color: #53c4f5; -fx-background-radius: 5;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
@@ -66,10 +63,20 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <PasswordField fx:id="txt_password" layoutX="130.0" layoutY="323.0" prefHeight="46.0" prefWidth="420.0" promptText="Masukkan Password" style="-fx-background-radius: 5;">
-                     <font>
-                        <Font size="14.0" />
-                     </font></PasswordField>
+                  <VBox layoutX="130.0" layoutY="262.0" prefHeight="115.0" prefWidth="420.0" spacing="20.0">
+                     <children>
+                        <PasswordField fx:id="txt_password" prefHeight="46.0" prefWidth="420.0" promptText="Masukkan Password" style="-fx-background-radius: 5;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </PasswordField>
+                        <TextField fx:id="txt_username" prefHeight="46.0" prefWidth="420.0" promptText="Masukkan Username" style="-fx-background-radius: 5;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
                </children>
             </Pane>
          </center>
